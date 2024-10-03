@@ -1,0 +1,6 @@
+@TAN_10042024_HostAddress = http://localhost:5250
+
+GET {{TAN_10042024_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

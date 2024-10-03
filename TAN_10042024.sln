@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAN_10042024", "TAN_10042024\TAN_10042024.csproj", "{B68D4478-3AFD-4F60-90E3-61865FC84E3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B68D4478-3AFD-4F60-90E3-61865FC84E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B68D4478-3AFD-4F60-90E3-61865FC84E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B68D4478-3AFD-4F60-90E3-61865FC84E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B68D4478-3AFD-4F60-90E3-61865FC84E3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
