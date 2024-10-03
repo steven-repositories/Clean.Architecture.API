@@ -29,6 +29,7 @@ if (app.Environment.IsDevelopment()) {
 app.UseHttpsRedirection();
 
 // Middleware(s)
+app.UseMiddleware<RequestLoggerMiddleware>();
 app.UseMiddleware<AuthenticationMiddleware>();
 
 app.UseAuthorization();
