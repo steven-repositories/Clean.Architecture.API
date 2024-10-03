@@ -44,7 +44,7 @@ namespace TAN_10042024.Migrations
                     b.HasIndex("Token")
                         .IsUnique();
 
-                    b.ToTable("AuthorizationTokens");
+                    b.ToTable("AuthorizationTokens", (string)null);
                 });
 
             modelBuilder.Entity("TAN_10042024.Domain.Entities.Clients", b =>
@@ -64,7 +64,7 @@ namespace TAN_10042024.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Clients", (string)null);
                 });
 #pragma warning restore 612, 618
         }
