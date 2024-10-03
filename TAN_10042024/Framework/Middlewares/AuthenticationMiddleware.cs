@@ -33,9 +33,9 @@ namespace TAN_10042024.Framework.Middlewares {
                 context.Response.StatusCode = StatusCodes.Status403Forbidden;
             }
 
-            var details = _authService.Authenticate(token!);
+            var details = await _authService.Authenticate(token!);
 
-            if (details == default) {
+            if (details == null) {
                 context.Response.StatusCode = StatusCodes.Status403Forbidden;
             }
 

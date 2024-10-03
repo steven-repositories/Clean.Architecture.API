@@ -24,5 +24,13 @@
             /// <param name="message">Exception message</param>
             public ControllerException(string message = null) : base(message) { }
         }
+
+        /// <summary>
+        /// Repository doing database stuff(s) error occured against the builder.
+        /// </summary>
+        public class RepositoryException : Exception {
+            /// <param name="message">Exception message</param>
+            public RepositoryException(string message = null) : base(message) { }
+        }
     }
 }
