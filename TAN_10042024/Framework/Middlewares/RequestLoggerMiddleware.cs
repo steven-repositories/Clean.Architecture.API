@@ -11,13 +11,12 @@ namespace TAN_10042024.Framework.Middlewares {
             _next = next;
         }
 
-        public async Task RequestLogger(HttpContext context) {
+        public async Task InvokeAsync(HttpContext context) {
             var method = context.Request.Method;
             var url = context.Request.GetDisplayUrl();
-            var query = context.Request;
 
             var info = "{0}: {1} {2}"
-                .FormatWith(method, url, query);
+                .FormatWith(method, url);
 
             _logger.LogInformation(info);
             await _next(context);

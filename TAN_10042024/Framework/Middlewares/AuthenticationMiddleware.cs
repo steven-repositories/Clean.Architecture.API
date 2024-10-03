@@ -11,7 +11,16 @@ namespace TAN_10042024.Framework.Middlewares {
             _authService = authService;
         }
 
-        public async Task Authenticate(HttpContext context) {
+        public async Task InvokeAsync(HttpContext context) {
+            var controllerName = context
+                .Request
+                .RouteValues["controller"]!
+                .ToString();
+
+            if (controllerName == "Authentication") {
+                await _next(context);
+            }
+
             var headers = context
                 .Request
                 .Headers;

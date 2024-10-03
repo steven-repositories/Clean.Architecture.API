@@ -17,9 +17,7 @@ namespace TAN_10042024.Framework.Controllers {
                 .GenerateToken()
                 .ToString();
 
-                
-
-            return default;
+            return Ok();
         }
     }
 }
