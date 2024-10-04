@@ -20,7 +20,7 @@ namespace TAN_10042024.Framework.Repositories {
                 .Include(c => c.Clients);
         }
 
-        public Task<AuthenticationSessions?> GetAuthDetailsByKey(string key) {
+        public async Task<AuthenticationSessions?> GetAuthDetailsByKey(string key) {
             if (key.IsNullOrEmpty()) {
                 throw new RepositoryException(Constants.ERR_MESSAGE_401);
             }
@@ -29,9 +29,9 @@ namespace TAN_10042024.Framework.Repositories {
             var query = GetQueryable();
             var result = query
                 .Where(auth => auth.Key == guid)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
-            return Task.FromResult(result);
+            return await result;
         }
 
         public void SaveAuthKey(Guid key, string clientName) {
