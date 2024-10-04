@@ -27,7 +27,7 @@ Also provides an example of fetching data from an entity using proper LINQ.
 Before you begin, ensure you have the following installed:
 
 - [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [Docker](https://www.docker.com/get-started)
+- [Docker Desktop](https://www.docker.com/get-started)
 - [Postman](https://www.postman.com/) (for testing API endpoints)
 
 
