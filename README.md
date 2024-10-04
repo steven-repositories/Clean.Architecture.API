@@ -79,4 +79,20 @@ Based on what is in the Dockerfile, the application will be exposed to port 8080
 
 The endpoints that this application does have are:
 
-1. 
+1. api/auth/key 
+	- Uses for generating new API Key to be set as header for other API Key-based security implemented endpoints.
+	
+2. api/file/upload/persons
+	- Uses to securely upload a JSON file with "persons" in it.
+	
+3. api/person/{team}/max-score
+	- Uses to get the highest score that a single team have in the database.
+	
+4. api/person/{team}/second-to-least-score
+	- Uses to get the second to least score that a single team have in the database.
+
+5. api/person/{team}/union-names
+	- Uses to unionized by comma separated all the person names for a single team.
+
+6. api/report/files
+	- Uses to generate basic report for all the files that have been processed or saved in the database.
