@@ -17,6 +17,7 @@ builder.Services.AddScoped<FilesRepository>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IFileUploadService, FileUploadService>();
 builder.Services.AddScoped<IReportService, ReportService>();
+builder.Services.AddScoped<IPersonService, PersonService>();
 
 builder.Services.AddControllers();
 

@@ -14,6 +14,13 @@ namespace TAN_10042024.Framework.Repositories {
             _dbContext = dbContext;
         }
 
+        public List<Persons> GetPersonsByTeam(string team) {
+            return _dbContext
+                .Set<Persons>()
+                .Where(person => person.Team == team)
+                .ToList();
+        }
+
         public void SavePersons(List<Person> persons) {
             persons.ForEach((person) => {
                 try {
