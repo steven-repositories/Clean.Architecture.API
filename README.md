@@ -4,7 +4,7 @@ This application is a RESTful web service that securely processes uploaded files
 
 This also provides an example for generating basic report for all the files uploaded.
 
-Also provides an example of fetching data from an entity using proper LINQ.
+Also provides an example of fetching data from an entity using EntityFramework Core and proper LINQ.
 
 The codebase applies Clean Architecture layering for better code quality implementation.
 
