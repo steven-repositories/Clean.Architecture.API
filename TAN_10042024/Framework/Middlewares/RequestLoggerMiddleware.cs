@@ -39,8 +39,8 @@ namespace TAN_10042024.Framework.Middlewares {
                     var fileName = file!.FileName;
                     var json = await file.ReadFileContent();
 
-                    _logger.LogInformation("File content:\n{0}"
-                        .FormatWith(json));
+                    _logger.LogInformation("File {0} content:\n{1}"
+                        .FormatWith(fileName, json));
 
                     var persons = JsonConvert
                         .DeserializeObject<PersonList>(json);
