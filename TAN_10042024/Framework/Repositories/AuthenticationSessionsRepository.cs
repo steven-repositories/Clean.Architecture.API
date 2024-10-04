@@ -20,18 +20,50 @@ namespace TAN_10042024.Framework.Repositories {
                 .Include(c => c.Clients);
         }
 
-        public Task<AuthenticationSessions?> GetAuthDetailsByKey(string token) {
-            if (token.IsNullOrEmpty()) {
+        public Task<AuthenticationSessions?> GetAuthDetailsByKey(string key) {
+            if (key.IsNullOrEmpty()) {
                 throw new RepositoryException(Constants.ERR_MESSAGE_401);
             }
 
-            var guid = Guid.Parse(token);
+            var guid = Guid.Parse(key);
             var query = GetQueryable();
             var result = query
                 .Where(auth => auth.Key == guid)
                 .FirstOrDefault();
 
             return Task.FromResult(result);
+        }
+
+        public void SaveAuthKey(Guid key, string clientName) {
+            _logger.LogInformation("Saving to database the auth key generated for client {0}."
+                .FormatWith(clientName));
+
+            try {
+                var client = _dbContext
+                    .Set<Clients>()
+                    .Where(client => client.Name == clientName)
+                    .FirstOrDefault()!;
+
+                var authSession = new AuthenticationSessions() {
+                    Key = key,
+                    Clients = client
+                };
+
+                _dbContext
+                    .Set<AuthenticationSessions>()
+                    .Add(authSession);
+
+                _dbContext.SaveChanges();
+            } catch (Exception e) {
+                var errorMessage = "Error encountered when saving auth key: {0}"
+                    .FormatWith(e.Message);
+
+                _logger.LogError(errorMessage);
+
+                throw new RepositoryException(errorMessage, e);
+            } finally {
+                _logger.LogInformation("Auth key is saved to database!");
+            }
         }
     }
 }

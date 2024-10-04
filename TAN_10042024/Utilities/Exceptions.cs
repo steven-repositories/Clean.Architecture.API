@@ -30,7 +30,7 @@
         /// </summary>
         public class RepositoryException : Exception {
             /// <param name="message">Exception message</param>
-            public RepositoryException(string message = null) : base(message) { }
+            public RepositoryException(string message = null, Exception innerException = null) : base(message, innerException) { }
         }
     }
 }

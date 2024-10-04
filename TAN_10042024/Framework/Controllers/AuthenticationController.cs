@@ -14,11 +14,13 @@ namespace TAN_10042024.Framework.Controllers {
 
         [HttpPost, Route("key")]
         public IActionResult Key([FromBody] KeyRequest request) {
-            var token = _authService
-                .GenerateKey()
+            var key = _authService
+                .GenerateKey(request.ClientName)
                 .ToString();
 
-            return Ok();
+            return Ok(new {
+                access_key = key
+            });
         }
     }
 }
