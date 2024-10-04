@@ -13,14 +13,15 @@ namespace TAN_10042024.Framework.Repositories {
             _dbContext = dbContext;
         }
 
-        public void SaveApiSession(string method, string url, string fileName) {
+        public void SaveApiSession(string method, string url, string fileName, string fileContent) {
             _logger.LogInformation("Saving to database the api session.");
 
             try {
                 var apiSession = new ApiSessions() {
                     Method = method,
                     URL = url,
-                    FileName = fileName
+                    FileName = fileName,
+                    FileContent = fileContent
                 };
 
                 _dbContext

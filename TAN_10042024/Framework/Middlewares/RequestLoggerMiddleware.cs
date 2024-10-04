@@ -37,15 +37,15 @@ namespace TAN_10042024.Framework.Middlewares {
                         .FirstOrDefault();
 
                     var fileName = file!.FileName;
-                    var json = await file.ReadFileContent();
+                    var fileContent = await file.ReadFileContent();
 
                     _logger.LogInformation("File {0} content:\n{1}"
-                        .FormatWith(fileName, json));
+                        .FormatWith(fileName, fileContent));
 
-                    var persons = JsonConvert
-                        .DeserializeObject<PersonList>(json);
+                    //var persons = JsonConvert
+                    //    .DeserializeObject<PersonList>(fileContent);
 
-                    context.Items["Persons"] = persons;
+                    //context.Items["Persons"] = persons;
 
                     using var serviceScope = _serviceProvider.CreateScope();
 
@@ -53,7 +53,7 @@ namespace TAN_10042024.Framework.Middlewares {
                         .ServiceProvider
                         .GetRequiredService<ApiSessionsRepository>();
 
-                    apiSessionRepo.SaveApiSession(method, url, fileName);
+                    apiSessionRepo.SaveApiSession(method, url, fileName, fileContent);
                 }
             }
 

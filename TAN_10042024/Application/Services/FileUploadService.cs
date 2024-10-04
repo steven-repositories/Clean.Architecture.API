@@ -14,12 +14,18 @@ namespace TAN_10042024.Application.Services {
             _personsRepo = personsRepo;
         }
 
-        public async Task<PersonList> Upload(IFormFile file) {
+        public async Task<List<Person>> Upload(IFormFile file) {
             var fileContent = await file.ReadFileContent();
 
-            var persons = JsonConvert
+            var deserializedContent = JsonConvert
                 .DeserializeObject<PersonList>(fileContent);
 
+            if (deserializedContent != null) {
+                var persons = deserializedContent.Persons;
+                _personsRepo.SavePersons(persons);
+
+                return persons;
+            }
 
             return default;
         }

@@ -2,6 +2,6 @@
 
 namespace TAN_10042024.Application.Abstractions {
     public interface IFileUpload {
-        Task<PersonList> Upload(IFormFile file);
+        Task<List<Person>> Upload(IFormFile file);
     }
 }
