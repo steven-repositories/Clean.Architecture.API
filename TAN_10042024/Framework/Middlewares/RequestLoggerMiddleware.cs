@@ -15,6 +15,8 @@ namespace TAN_10042024.Framework.Middlewares {
             var method = context.Request.Method;
             var url = context.Request.GetDisplayUrl();
 
+            var body = context.Request.Body;
+
             var info = "{0}: {1}"
                 .FormatWith(method, url);
 
