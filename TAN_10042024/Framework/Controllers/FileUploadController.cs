@@ -8,10 +8,8 @@ namespace TAN_10042024.Framework.Controllers {
 
         }
 
-        [HttpPost, Route("upload")]
-        public IActionResult Upload([FromForm] IFormFile file) {
-            var stream = file.OpenReadStream();
-            stream.Seek(0, SeekOrigin.Begin);
+        [HttpPost, Route("upload/persons")]
+        public IActionResult UploadPersons([FromForm] IFormFile file) {
 
             return Ok(new {
 
