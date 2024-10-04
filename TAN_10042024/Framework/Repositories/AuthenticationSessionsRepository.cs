@@ -20,19 +20,18 @@ namespace TAN_10042024.Framework.Repositories {
                 .Include(c => c.Clients);
         }
 
-        public AuthenticationSessions? GetAuthDetailsByKey(string key) {
+        public Task<AuthenticationSessions?> GetAuthDetailsByKey(string key) {
             if (key.IsNullOrEmpty()) {
                 throw new RepositoryException(Constants.ERR_MESSAGE_401);
             }
 
             var guid = Guid.Parse(key);
             var query = GetQueryable();
-
             var result = query
                 .Where(auth => auth.Key == guid)
                 .FirstOrDefault();
 
-            return result;
+            return Task.FromResult(result);
         }
 
         public void SaveAuthKey(Guid key, string clientName) {
