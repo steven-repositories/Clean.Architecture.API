@@ -7,6 +7,7 @@ namespace TAN_10042024.Application.Data {
         public DbSet<Clients> Clients { get; set; }
         public DbSet<ApiSessions> ApiSessions { get; set; }
         public DbSet<Persons> Persons { get; set; }
+        public DbSet<Files> Files { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options) { }
 

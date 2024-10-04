@@ -50,7 +50,7 @@ namespace TAN_10042024.Framework.Middlewares {
                         .ServiceProvider
                         .GetRequiredService<ApiSessionsRepository>();
 
-                    apiSessionRepo.SaveApiSession(method, url, fileName, fileContent);
+                    apiSessionRepo.SaveApiSession(method, url);
                 }
             }
 

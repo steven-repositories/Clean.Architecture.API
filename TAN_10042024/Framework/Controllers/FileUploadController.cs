@@ -23,11 +23,9 @@ namespace TAN_10042024.Framework.Controllers {
                 throw new ApiException("The file does not have a content.");
             }
 
-            _fileUploadService.Upload((string)fileContent!);
+            _fileUploadService.Upload(file.FileName, (string)fileContent!);
 
-            return Ok(new {
-
-            });
+            return Ok();
         }
     }
 }
