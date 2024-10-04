@@ -6,6 +6,8 @@ This also provides an example for generating basic report for all the files uplo
 
 Also provides an example of fetching data from an entity using proper LINQ.
 
+The codebase applies Clean Architecture layering for better code quality implementation.
+
 
 ## Table of Contents
 
