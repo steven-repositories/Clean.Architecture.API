@@ -10,22 +10,6 @@
         }
 
         /// <summary>
-        /// Builder error occured against the builder.
-        /// </summary>
-        public class BuilderException : Exception {
-            /// <param name="message">Exception message</param>
-            public BuilderException(string message = null) : base(message) { }
-        }
-
-        /// <summary>
-        /// Controller processing request error occured against the builder.
-        /// </summary>
-        public class ControllerException : Exception {
-            /// <param name="message">Exception message</param>
-            public ControllerException(string message = null) : base(message) { }
-        }
-
-        /// <summary>
         /// Repository doing database stuff(s) error occured against the builder.
         /// </summary>
         public class RepositoryException : Exception {
