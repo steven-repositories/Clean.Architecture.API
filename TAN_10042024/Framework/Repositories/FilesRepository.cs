@@ -13,6 +13,12 @@ namespace TAN_10042024.Framework.Repositories {
             _dbContext = dbContext;
         }
 
+        public List<Files> GetAll() {
+            return _dbContext
+                .Set<Files>()
+                .ToList();
+        }
+
         public void SaveFile(string fileName, string fileContent) {
             try {
                 _logger.LogInformation("Saving to database the file {0}"

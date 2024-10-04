@@ -6,20 +6,15 @@ using TAN_10042024.Framework.Repositories;
 namespace TAN_10042024.Application.Services {
     public class ReportService : IReportService {
         private readonly ILogger<ReportService> _logger;
-        private readonly ApiSessionsRepository _apiSessionsRepo;
+        private readonly FilesRepository _filesRepo;
 
-        public ReportService(ILogger<ReportService> logger, ApiSessionsRepository apiSessionsRepo) {
+        public ReportService(ILogger<ReportService> logger, FilesRepository filesRepo) {
             _logger = logger;
-            _apiSessionsRepo = apiSessionsRepo;
+            _filesRepo = filesRepo;
         }
 
         public FileReportResponse ReportFiles() {
-            var apiSessions = _apiSessionsRepo.GetAll();
-
-            var filesProcessed = apiSessions
-                .Where(w => !w.FileContent.IsNullOrEmpty())
-                .ToList();
-
+            var filesProcessed = _filesRepo.GetAll();
             var fileReportList = new List<FileReport>();
 
             filesProcessed.ForEach((file) => {
