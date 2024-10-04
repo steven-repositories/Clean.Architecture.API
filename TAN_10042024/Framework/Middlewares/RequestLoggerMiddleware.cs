@@ -42,10 +42,7 @@ namespace TAN_10042024.Framework.Middlewares {
                     _logger.LogInformation("File {0} content:\n{1}"
                         .FormatWith(fileName, fileContent));
 
-                    //var persons = JsonConvert
-                    //    .DeserializeObject<PersonList>(fileContent);
-
-                    //context.Items["Persons"] = persons;
+                    context.Items["FileContent"] = fileContent;
 
                     using var serviceScope = _serviceProvider.CreateScope();
 

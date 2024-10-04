@@ -13,7 +13,7 @@ builder.Services.AddDbContext<AppDbContext>((options) =>
 builder.Services.AddScoped<ApiSessionsRepository>();
 builder.Services.AddScoped<AuthenticationSessionsRepository>();
 builder.Services.AddScoped<PersonsRepository>();
-builder.Services.AddScoped<IAuthentication, AuthenticationService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 builder.Services.AddControllers();
 

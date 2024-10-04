@@ -5,7 +5,7 @@ using TAN_10042024.Framework.Repositories;
 using TAN_10042024.Utilities;
 
 namespace TAN_10042024.Application.Services {
-    public class FileUploadService : IFileUpload {
+    public class FileUploadService : IFileUploadService {
         private readonly ILogger<FileUploadService> _logger;
         private readonly PersonsRepository _personsRepo;
 
@@ -14,8 +14,8 @@ namespace TAN_10042024.Application.Services {
             _personsRepo = personsRepo;
         }
 
-        public async Task<List<Person>> Upload(IFormFile file) {
-            var fileContent = await file.ReadFileContent();
+        public void Upload(string fileContent) {
+            _logger.LogInformation("Deserializing the json content...");
 
             var deserializedContent = JsonConvert
                 .DeserializeObject<PersonList>(fileContent);
@@ -23,11 +23,7 @@ namespace TAN_10042024.Application.Services {
             if (deserializedContent != null) {
                 var persons = deserializedContent.Persons;
                 _personsRepo.SavePersons(persons);
-
-                return persons;
             }
-
-            return default;
         }
     }
 }
