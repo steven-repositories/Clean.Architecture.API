@@ -18,7 +18,7 @@ namespace TAN_10042024.Application.Services {
         }
 
         public async Task<AuthenticationSessions?> Authenticate(string token) {
-            return await _authTokensRepo.GetAuthDetailsByToken(token);
+            return await _authTokensRepo.GetAuthDetailsByKey(token);
         }
     }
 }

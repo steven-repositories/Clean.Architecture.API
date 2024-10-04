@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TAN_10042024.Application.Abstractions;
+using TAN_10042024.Application.Models;
 
 namespace TAN_10042024.Framework.Controllers {
     [Route("api/auth")]
@@ -12,9 +13,9 @@ namespace TAN_10042024.Framework.Controllers {
         }
 
         [HttpPost, Route("key")]
-        public IActionResult Key([FromBody] ) {
+        public IActionResult Key([FromBody] KeyRequest request) {
             var token = _authService
-                .GenerateToken()
+                .GenerateKey()
                 .ToString();
 
             return Ok();
