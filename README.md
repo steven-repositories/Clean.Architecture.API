@@ -1,6 +1,6 @@
 # TAN_10042024
 
-This application is a RESTful web service application that securely processes uploaded files by using API Key-based security mechanism that is built on top of ASP.NET Core.
+This application is a RESTful web service that securely processes uploaded files by using API Key-based security mechanism that is built on top of ASP.NET Core.
 
 This also provides an example for generating basic report for all the files uploaded.
 
