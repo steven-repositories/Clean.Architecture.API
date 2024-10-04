@@ -28,7 +28,7 @@ namespace TAN_10042024.Framework.Middlewares {
                 .RouteValues["controller"]!
                 .ToString();
 
-            if (controllerName != "Authentication") {
+            if (controllerName == "FileUpload") {
                 var form = request.Form;
 
                 if (form.Files.Count > 0) {

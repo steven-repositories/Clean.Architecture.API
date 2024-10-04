@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using TAN_10042024.Application.Abstractions;
 
 namespace TAN_10042024.Framework.Controllers {
@@ -15,8 +14,8 @@ namespace TAN_10042024.Framework.Controllers {
         [HttpGet, Route("files")]
         public IActionResult ReportFiles() {
             var files = _reportService.ReportFiles();
-            
-            return Ok(JsonConvert.SerializeObject(files));
+
+            return Ok(files);
         }
     }
 }
