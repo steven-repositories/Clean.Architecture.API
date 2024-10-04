@@ -14,20 +14,15 @@ namespace TAN_10042024.Framework.Repositories {
             _dbContext = dbContext;
         }
 
-        private IQueryable<AuthenticationSessions> GetQueryable() {
-            return _dbContext
-                .Set<AuthenticationSessions>()
-                .Include(c => c.Clients);
-        }
-
         public async Task<AuthenticationSessions?> GetAuthDetailsByKey(string key) {
             if (key.IsNullOrEmpty()) {
                 throw new RepositoryException(Constants.ERR_MESSAGE_401);
             }
 
             var guid = Guid.Parse(key);
-            var query = GetQueryable();
-            var result = query
+
+            var result = _dbContext
+                .Set<AuthenticationSessions>()
                 .Where(auth => auth.Key == guid)
                 .FirstOrDefaultAsync();
 
