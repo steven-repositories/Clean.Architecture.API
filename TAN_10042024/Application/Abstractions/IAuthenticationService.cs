@@ -2,7 +2,7 @@
 
 namespace TAN_10042024.Application.Abstractions {
     public interface IAuthenticationService {
-        Guid GenerateToken();
-        Task<AuthorizationTokens?> Authenticate(string token);
+        Guid GenerateKey();
+        Task<AuthenticationSessions?> Authenticate(string token);
     }
 }

@@ -5,19 +5,19 @@ using TAN_10042024.Framework.Repositories;
 namespace TAN_10042024.Application.Services {
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
-        private readonly AuthorizationTokensRepository _authTokensRepo;
+        private readonly AuthenticationSessionsRepository _authTokensRepo;
 
-        public AuthenticationService(ILogger<AuthenticationService> logger, AuthorizationTokensRepository authTokensRepo) {
+        public AuthenticationService(ILogger<AuthenticationService> logger, AuthenticationSessionsRepository authTokensRepo) {
             _logger = logger;
             _authTokensRepo = authTokensRepo;
         }
 
-        public Guid GenerateToken() {
-            _logger.LogInformation("Generating new token...");
+        public Guid GenerateKey() {
+            _logger.LogInformation("Generating new authentication key...");
             return Guid.NewGuid();
         }
 
-        public async Task<AuthorizationTokens?> Authenticate(string token) {
+        public async Task<AuthenticationSessions?> Authenticate(string token) {
             return await _authTokensRepo.GetAuthDetailsByToken(token);
         }
     }

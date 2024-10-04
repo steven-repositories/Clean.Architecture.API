@@ -11,8 +11,8 @@ namespace TAN_10042024.Framework.Controllers {
             _authService = authService;
         }
 
-        [HttpPost, Route("token")]
-        public IActionResult Token() {
+        [HttpPost, Route("key")]
+        public IActionResult Key([FromBody] ) {
             var token = _authService
                 .GenerateToken()
                 .ToString();

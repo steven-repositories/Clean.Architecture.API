@@ -18,7 +18,7 @@ builder.Services.AddDbContext<AppDbContext>((options) =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CC")));
 
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
-builder.Services.AddScoped<AuthorizationTokensRepository>();
+builder.Services.AddScoped<AuthenticationSessionsRepository>();
 
 var app = builder.Build();
 
