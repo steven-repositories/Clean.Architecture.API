@@ -1,27 +1,70 @@
 ﻿using Microsoft.AspNetCore.Http.Extensions;
+using Newtonsoft.Json;
+using TAN_10042024.Application.Models;
+using TAN_10042024.Framework.Repositories;
 using TAN_10042024.Utilities;
 
 namespace TAN_10042024.Framework.Middlewares {
     public class RequestLoggerMiddleware {
         private readonly ILogger<RequestLoggerMiddleware> _logger;
         private readonly RequestDelegate _next;
+        private readonly IServiceProvider _serviceProvider;
 
-        public RequestLoggerMiddleware(ILogger<RequestLoggerMiddleware> logger, RequestDelegate next) {
+        public RequestLoggerMiddleware(ILogger<RequestLoggerMiddleware> logger, RequestDelegate next, IServiceProvider serviceProvider) {
             _logger = logger;
             _next = next;
+            _serviceProvider = serviceProvider;
         }
 
         public async Task InvokeAsync(HttpContext context) {
-            var method = context.Request.Method;
-            var url = context.Request.GetDisplayUrl();
+            var request = context.Request;
+            var method = request.Method;
+            var url = request.GetDisplayUrl();
 
-            var body = context.Request.Body;
+            _logger.LogInformation("{0}: {1}"
+                .FormatWith(method, url));
 
-            var info = "{0}: {1}"
-                .FormatWith(method, url);
+            var controllerName = request
+                .RouteValues["controller"]!
+                .ToString();
 
-            _logger.LogInformation(info);
+            if (controllerName != "Authentication") {
+                var form = request.Form;
+
+                if (form.Files.Count > 0) {
+                    var file = form
+                        .Files
+                        .FirstOrDefault();
+
+                    var fileName = file!.FileName;
+                    var persons = await ReadFileContent(file!);
+                    context.Items["Persons"] = persons;
+
+                    using var serviceScope = _serviceProvider.CreateScope();
+
+                    var apiSessionRepo = serviceScope
+                        .ServiceProvider
+                        .GetRequiredService<ApiSessionsRepository>();
+
+                    apiSessionRepo.SaveApiSession(method, url, fileName);
+                }
+            }
+
             await _next(context);
+        }
+
+        private async Task<PersonList> ReadFileContent(IFormFile file) {
+            var stream = file.OpenReadStream();
+            stream.Seek(0, SeekOrigin.Begin);
+
+            var reader = new StreamReader(stream);
+            var json = await reader.ReadToEndAsync();
+
+            _logger.LogInformation("File content:\n{0}"
+                .FormatWith(json));
+
+            return JsonConvert
+                .DeserializeObject<PersonList>(json)!;
         }
     }
 }
