@@ -11,14 +11,14 @@ namespace TAN_10042024.Application.Services {
             _personsRepo = personsRepo;
         }
 
-        public int GetMaxScoreByTeam(string team) {
-            var persons = _personsRepo.GetPersonsByTeam(team);
+        public async Task<int> GetMaxScoreByTeam(string team) {
+            var persons = await _personsRepo.GetPersonsByTeam(team);
 
             return persons.Max(person => person.Score);
         }
 
-        public int GetSecondToLeastScoreByTeam(string team) {
-            var persons = _personsRepo.GetPersonsByTeam(team);
+        public async Task<int> GetSecondToLeastScoreByTeam(string team) {
+            var persons = await _personsRepo.GetPersonsByTeam(team);
 
             var secondToLeastScore = persons
                 .OrderBy(person => person.Score)
@@ -29,8 +29,8 @@ namespace TAN_10042024.Application.Services {
             return secondToLeastScore;
         }
 
-        public string UnionizePersonNamesByTeam(string team) {
-            var persons = _personsRepo.GetPersonsByTeam(team);
+        public async Task<string> UnionizePersonNamesByTeam(string team) {
+            var persons = await _personsRepo.GetPersonsByTeam(team);
             var personNames = persons
                 .Select(person => person.Name)
                 .ToList();

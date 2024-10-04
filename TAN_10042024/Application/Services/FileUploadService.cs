@@ -15,7 +15,7 @@ namespace TAN_10042024.Application.Services {
             _filesRepo = filesRepo;
         }
 
-        public void Upload(string fileName, string fileContent) {
+        public async Task Upload(string fileName, string fileContent) {
             _logger.LogInformation("Deserializing the json content...");
 
             var deserializedContent = JsonConvert
@@ -23,10 +23,10 @@ namespace TAN_10042024.Application.Services {
 
             if (deserializedContent != null) {
                 var persons = deserializedContent.Persons;
-                _personsRepo.SavePersons(persons);
+                await _personsRepo.SavePersons(persons);
             }
 
-            _filesRepo.SaveFile(fileName, fileContent);
+            await _filesRepo.SaveFile(fileName, fileContent);
         }
     }
 }

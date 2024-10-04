@@ -44,14 +44,14 @@ namespace TAN_10042024.Framework.Repositories {
                     Clients = client
                 };
 
-                _dbContext
+                await _dbContext
                     .Set<AuthenticationSessions>()
-                    .Add(authSession);
+                    .AddAsync(authSession);
 
-                var id = await _dbContext.SaveChangesAsync();
+                var authId = await _dbContext.SaveChangesAsync();
 
                 _logger.LogInformation("Auth key is saved to database with key of: {0}."
-                    .FormatWith(id));
+                    .FormatWith(authId));
             } catch (Exception e) {
                 var errorMessage = "Error encountered when saving auth key: {0}"
                     .FormatWith(e.Message);

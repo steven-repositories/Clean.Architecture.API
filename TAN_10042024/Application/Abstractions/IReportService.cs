@@ -2,6 +2,6 @@
 
 namespace TAN_10042024.Application.Abstractions {
     public interface IReportService {
-        FileReportResponse ReportFiles();
+        Task<FileReportResponse> ReportFiles();
     }
 }

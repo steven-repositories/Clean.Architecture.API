@@ -2,6 +2,6 @@
 
 namespace TAN_10042024.Application.Abstractions {
     public interface IFileUploadService {
-        void Upload(string fileName, string fileContent);
+        Task Upload(string fileName, string fileContent);
     }
 }

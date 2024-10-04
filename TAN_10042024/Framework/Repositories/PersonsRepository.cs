@@ -1,4 +1,5 @@
-﻿using TAN_10042024.Application.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using TAN_10042024.Application.Data;
 using TAN_10042024.Application.Models;
 using TAN_10042024.Domain.Entities;
 using TAN_10042024.Utilities;
@@ -14,15 +15,15 @@ namespace TAN_10042024.Framework.Repositories {
             _dbContext = dbContext;
         }
 
-        public List<Persons> GetPersonsByTeam(string team) {
+        public Task<List<Persons>> GetPersonsByTeam(string team) {
             return _dbContext
                 .Set<Persons>()
                 .Where(person => person.Team == team)
-                .ToList();
+                .ToListAsync();
         }
 
-        public void SavePersons(List<Person> persons) {
-            persons.ForEach((person) => {
+        public async Task SavePersons(List<Person> persons) {
+            foreach (var person in persons) {
                 try {
                     var newPerson = new Persons() {
                         Name = person.Name,
@@ -33,14 +34,14 @@ namespace TAN_10042024.Framework.Repositories {
                     _logger.LogInformation("Adding person {0} details to the database..."
                         .FormatWith(person.Name));
 
-                    _dbContext
+                    await _dbContext
                         .Set<Persons>()
-                        .Add(newPerson);
+                        .AddAsync(newPerson);
 
-                    _dbContext.SaveChanges();
+                    var personId = await _dbContext.SaveChangesAsync();
 
-                    _logger.LogInformation("Person {0} details is saved to the database!"
-                       .FormatWith(person.Name));
+                    _logger.LogInformation("Person {0} details is saved to the database with key of: {1}"
+                       .FormatWith(person.Name, personId));
                 } catch (Exception e) {
                     var errorMessage = "Error encountered when saving persons: {0}"
                         .FormatWith(e.Message);
@@ -48,7 +49,7 @@ namespace TAN_10042024.Framework.Repositories {
                     _logger.LogError(errorMessage);
                     throw new RepositoryException(errorMessage, e);
                 }
-            });
+            }
         }
     }
 }

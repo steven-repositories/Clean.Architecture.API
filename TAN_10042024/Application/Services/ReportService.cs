@@ -13,18 +13,18 @@ namespace TAN_10042024.Application.Services {
             _filesRepo = filesRepo;
         }
 
-        public FileReportResponse ReportFiles() {
-            var filesProcessed = _filesRepo.GetAll();
+        public async Task<FileReportResponse> ReportFiles() {
+            var filesProcessed = await _filesRepo.GetAll();
             var fileReportList = new List<FileReport>();
 
-            filesProcessed.ForEach((file) => {
+            foreach (var file in filesProcessed) {
                 var fileReport = new FileReport() {
                     FileName = file.FileName,
                     ProcessedOn = file.CreatedDateTime.ToString("g")
                 };
 
                 fileReportList.Add(fileReport);
-            });
+            }
 
             var fileReportResponse = new FileReportResponse() {
                 Count = filesProcessed.Count,

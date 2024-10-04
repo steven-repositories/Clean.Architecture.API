@@ -12,8 +12,8 @@ namespace TAN_10042024.Framework.Controllers {
         }
 
         [HttpGet, Route("files")]
-        public IActionResult ReportFiles() {
-            var files = _reportService.ReportFiles();
+        public async Task<IActionResult> ReportFiles() {
+            var files = await _reportService.ReportFiles();
 
             return Ok(files);
         }

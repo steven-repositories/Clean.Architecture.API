@@ -14,7 +14,7 @@ namespace TAN_10042024.Framework.Controllers {
         }
 
         [HttpPost, Route("upload/persons")]
-        public IActionResult UploadPersons([FromForm] IFormFile file) {
+        public async Task<IActionResult> UploadPersons([FromForm] IFormFile file) {
             if (!HttpContext.Items.TryGetValue("FileContent", out var fileContent)) {
                 throw new ApiException("The content of the file cannot be found.");
             }
@@ -23,7 +23,7 @@ namespace TAN_10042024.Framework.Controllers {
                 throw new ApiException("The file does not have a content.");
             }
 
-            _fileUploadService.Upload(file.FileName, (string)fileContent!);
+            await _fileUploadService.Upload(file.FileName, (string)fileContent!);
 
             return Ok();
         }
