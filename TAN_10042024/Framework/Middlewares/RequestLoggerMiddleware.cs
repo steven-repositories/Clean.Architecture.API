@@ -37,7 +37,14 @@ namespace TAN_10042024.Framework.Middlewares {
                         .FirstOrDefault();
 
                     var fileName = file!.FileName;
-                    var persons = await ReadFileContent(file!);
+                    var json = await file.ReadFileContent();
+
+                    _logger.LogInformation("File content:\n{0}"
+                        .FormatWith(json));
+
+                    var persons = JsonConvert
+                        .DeserializeObject<PersonList>(json);
+
                     context.Items["Persons"] = persons;
 
                     using var serviceScope = _serviceProvider.CreateScope();
@@ -51,20 +58,6 @@ namespace TAN_10042024.Framework.Middlewares {
             }
 
             await _next(context);
-        }
-
-        private async Task<PersonList> ReadFileContent(IFormFile file) {
-            var stream = file.OpenReadStream();
-            stream.Seek(0, SeekOrigin.Begin);
-
-            var reader = new StreamReader(stream);
-            var json = await reader.ReadToEndAsync();
-
-            _logger.LogInformation("File content:\n{0}"
-                .FormatWith(json));
-
-            return JsonConvert
-                .DeserializeObject<PersonList>(json)!;
         }
     }
 }
