@@ -21,11 +21,9 @@ namespace TAN_10042024.Framework.Middlewares {
                     StackTrace = e.StackTrace
                 };
 
-                var internalServerResponseJson = JsonConvert.SerializeObject(internalServerResponse);
-
                 await context
                     .Response
-                    .WriteAsJsonAsync(internalServerResponseJson);
+                    .WriteAsJsonAsync(internalServerResponse);
             }
         }
     }

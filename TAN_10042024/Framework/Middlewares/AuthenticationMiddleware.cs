@@ -34,11 +34,9 @@ namespace TAN_10042024.Framework.Middlewares {
                         Message = Constants.ERR_MESSAGE_401
                     };
 
-                    var unauthorizedResponseJson = JsonConvert.SerializeObject(unauthorizedResponse);
-
                     await context
                         .Response
-                        .WriteAsync(unauthorizedResponseJson);
+                        .WriteAsJsonAsync(unauthorizedResponse);
 
                     return;
                 }
@@ -59,11 +57,9 @@ namespace TAN_10042024.Framework.Middlewares {
                         Message = Constants.ERR_MESSAGE_403
                     };
                     
-                    var forbiddenResponseJson = JsonConvert.SerializeObject(forbiddenResponse);
-
                     await context
                         .Response
-                        .WriteAsJsonAsync(forbiddenResponseJson);
+                        .WriteAsJsonAsync(forbiddenResponse);
 
                     return;
                 }
