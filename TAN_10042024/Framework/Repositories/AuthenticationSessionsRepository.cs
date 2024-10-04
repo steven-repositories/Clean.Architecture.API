@@ -7,7 +7,7 @@ using static TAN_10042024.Utilities.Exceptions;
 namespace TAN_10042024.Framework.Repositories {
     public class AuthenticationSessionsRepository {
         private readonly ILogger<AuthenticationSessionsRepository> _logger;
-        private AppDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
         public AuthenticationSessionsRepository(ILogger<AuthenticationSessionsRepository> logger, AppDbContext dbContext) {
             _logger = logger;
@@ -34,7 +34,7 @@ namespace TAN_10042024.Framework.Repositories {
             return Task.FromResult(result);
         }
 
-        public async void SaveAuthKey(Guid key, string clientName) {
+        public void SaveAuthKey(Guid key, string clientName) {
             _logger.LogInformation("Saving to database the auth key generated for client {0}."
             .FormatWith(clientName));
 
@@ -54,14 +54,14 @@ namespace TAN_10042024.Framework.Repositories {
                     .Add(authSession);
 
                 _dbContext.SaveChanges();
+
+                _logger.LogInformation("Auth key is saved to database!");
             } catch (Exception e) {
                 var errorMessage = "Error encountered when saving auth key: {0}"
                     .FormatWith(e.Message);
 
                 _logger.LogError(errorMessage);
                 throw new RepositoryException(errorMessage, e);
-            } finally {
-                _logger.LogInformation("Auth key is saved to database!");
             }
         }
     }

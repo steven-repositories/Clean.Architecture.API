@@ -6,7 +6,7 @@ using static TAN_10042024.Utilities.Exceptions;
 namespace TAN_10042024.Framework.Repositories {
     public class ApiSessionsRepository {
         private readonly ILogger<ApiSessionsRepository> _logger;
-        private AppDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
         public ApiSessionsRepository(ILogger<ApiSessionsRepository> logger, AppDbContext dbContext) {
             _logger = logger;
@@ -28,14 +28,14 @@ namespace TAN_10042024.Framework.Repositories {
                     .Add(apiSession);
 
                 _dbContext.SaveChanges();
+
+                _logger.LogInformation("Api Session is saved to database!");
             } catch (Exception e) {
                 var errorMessage = "Error encountered when saving api session: {0}"
                     .FormatWith(e.Message);
 
                 _logger.LogError(errorMessage);
                 throw new RepositoryException(errorMessage, e);
-            } finally {
-                _logger.LogInformation("Api Session is saved to database!");
             }
         }
     }
