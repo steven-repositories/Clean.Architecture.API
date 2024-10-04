@@ -4,7 +4,7 @@ using TAN_10042024.Framework.Repositories;
 using TAN_10042024.Utilities;
 
 namespace TAN_10042024.Application.Services {
-    public class AuthenticationService : IAuthenticationService {
+    public class AuthenticationService : IAuthentication {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly AuthenticationSessionsRepository _authSessionsRepo;
 

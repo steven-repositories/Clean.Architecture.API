@@ -13,7 +13,9 @@ namespace TAN_10042024.Framework.Controllers {
             var stream = file.OpenReadStream();
             stream.Seek(0, SeekOrigin.Begin);
 
-            return default;
+            return Ok(new {
+
+            });
         }
     }
 }
