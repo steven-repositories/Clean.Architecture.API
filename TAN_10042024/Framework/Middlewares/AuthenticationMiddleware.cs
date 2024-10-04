@@ -22,12 +22,14 @@ namespace TAN_10042024.Framework.Middlewares {
                     .Request
                     .Headers;
 
-                if (!headers.TryGetValue("Authorization", out var token)) {
+                if (!headers.TryGetValue("Authorization", out var key)) {
                     context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    return;
                 }
 
-                if (token.IsNullOrEmpty()) {
+                if (key.IsNullOrEmpty()) {
                     context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                    return;
                 }
 
                 using var serviceScope = _serviceProvider.CreateScope();
@@ -36,10 +38,11 @@ namespace TAN_10042024.Framework.Middlewares {
                     .ServiceProvider
                     .GetRequiredService<IAuthenticationService>();
 
-                var details = await authService.Authenticate(token!);
+                var details = await authService.Authenticate(key!);
 
                 if (details == null) {
                     context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                    return;
                 }
 
                 context.Items["Locals"] = details;
