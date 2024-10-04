@@ -1,5 +1,9 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using System.Net;
 using TAN_10042024.Application.Abstractions;
+using TAN_10042024.Application.Models;
+using TAN_10042024.Utilities;
 
 namespace TAN_10042024.Framework.Middlewares {
     public class AuthenticationMiddleware {
@@ -22,13 +26,20 @@ namespace TAN_10042024.Framework.Middlewares {
                     .Request
                     .Headers;
 
-                if (!headers.TryGetValue("Authorization", out var key)) {
+                if (!headers.TryGetValue("Auth-Key", out var key)) {
                     context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                    return;
-                }
 
-                if (key.IsNullOrEmpty()) {
-                    context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                    var unauthorizedResponse = new ErrorResponse() {
+                        Status = "Unauthorized",
+                        Message = Constants.ERR_MESSAGE_401
+                    };
+
+                    var unauthorizedResponseJson = JsonConvert.SerializeObject(unauthorizedResponse);
+
+                    await context
+                        .Response
+                        .WriteAsync(unauthorizedResponseJson);
+
                     return;
                 }
 
@@ -42,6 +53,18 @@ namespace TAN_10042024.Framework.Middlewares {
 
                 if (details == null) {
                     context.Response.StatusCode = StatusCodes.Status403Forbidden;
+
+                    var forbiddenResponse = new ErrorResponse() {
+                        Status = "Forbidden",
+                        Message = Constants.ERR_MESSAGE_403
+                    };
+                    
+                    var forbiddenResponseJson = JsonConvert.SerializeObject(forbiddenResponse);
+
+                    await context
+                        .Response
+                        .WriteAsJsonAsync(forbiddenResponseJson);
+
                     return;
                 }
 

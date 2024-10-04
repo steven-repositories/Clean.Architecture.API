@@ -33,7 +33,7 @@ app.UseHttpsRedirection();
 // Middleware(s)
 app.UseMiddleware<RequestLoggerMiddleware>();
 app.UseMiddleware<AuthenticationMiddleware>();
-app.UseMiddleware<ErrorMiddleware>();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseAuthorization();
 
