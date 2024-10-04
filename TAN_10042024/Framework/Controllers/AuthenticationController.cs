@@ -13,10 +13,9 @@ namespace TAN_10042024.Framework.Controllers {
         }
 
         [HttpPost, Route("key")]
-        public IActionResult Key([FromBody] KeyRequest request) {
-            var key = _authService
-                .GenerateKey(request.ClientName)
-                .ToString();
+        public async Task<IActionResult> Key([FromBody] KeyRequest request) {
+            var key = await _authService
+                .GenerateKey(request.ClientName);
 
             return Ok(new {
                 access_key = key

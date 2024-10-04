@@ -29,7 +29,7 @@ namespace TAN_10042024.Framework.Repositories {
             return await result;
         }
 
-        public void SaveAuthKey(Guid key, string clientName) {
+        public async Task SaveAuthKey(Guid key, string clientName) {
             _logger.LogInformation("Saving to database the auth key generated for client {0}."
             .FormatWith(clientName));
 
@@ -48,9 +48,10 @@ namespace TAN_10042024.Framework.Repositories {
                     .Set<AuthenticationSessions>()
                     .Add(authSession);
 
-                _dbContext.SaveChanges();
+                var id = await _dbContext.SaveChangesAsync();
 
-                _logger.LogInformation("Auth key is saved to database!");
+                _logger.LogInformation("Auth key is saved to database with key of: {0}."
+                    .FormatWith(id));
             } catch (Exception e) {
                 var errorMessage = "Error encountered when saving auth key: {0}"
                     .FormatWith(e.Message);

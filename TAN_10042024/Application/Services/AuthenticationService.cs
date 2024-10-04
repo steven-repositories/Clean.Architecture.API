@@ -13,7 +13,7 @@ namespace TAN_10042024.Application.Services {
             _authSessionsRepo = authSessionsRepo;
         }
 
-        public Guid GenerateKey(string clientName) {
+        public async Task<Guid> GenerateKey(string clientName) {
             _logger.LogInformation("Generating new authentication key for client {0}..."
                 .FormatWith(clientName));
 
@@ -21,9 +21,10 @@ namespace TAN_10042024.Application.Services {
             var isNew = default(bool);
 
             do {
-                var authSession = _authSessionsRepo.GetAuthDetailsByKey(newKey.ToString());
+                var authSession = await _authSessionsRepo
+                    .GetAuthDetailsByKey(newKey.ToString());
 
-                if (authSession.Result != null) {
+                if (authSession != null) {
                     newKey = Guid.NewGuid();
                     continue;
                 }
@@ -34,7 +35,7 @@ namespace TAN_10042024.Application.Services {
             _logger.LogInformation("New authentication key is generated: {0}"
                 .FormatWith(newKey.ToString()));
 
-            _authSessionsRepo.SaveAuthKey(newKey, clientName);
+            await _authSessionsRepo.SaveAuthKey(newKey, clientName);
             return newKey;
         }
 
