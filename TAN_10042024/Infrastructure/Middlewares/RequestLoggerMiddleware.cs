@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http.Extensions;
-using Newtonsoft.Json;
-using TAN_10042024.Application.Models;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Infrastructure.Data.Repositories;
 
-namespace TAN_10042024.Infrastructure.Middlewares
-{
+namespace TAN_10042024.Infrastructure.Middlewares {
     public class RequestLoggerMiddleware
     {
         private readonly ILogger<RequestLoggerMiddleware> _logger;
