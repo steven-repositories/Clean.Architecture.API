@@ -117,7 +117,11 @@ The endpoints that this application have are:
 	- Uses to generate basic report for all the files that have been processed or saved in the database.
 
 You can import this collection to your Postman using the following API link: 
-https://api.postman.com/collections/4784032-c01a7b96-7947-4143-92d8-c759f70b87f7?access_key=PMAT-01J9DPH52X8JAF8HNHEXFWSQBE
+https://api.postman.com/collections/4784032-c01a7b96-7947-4143-92d8-c759f70b87f7?access_key={ACCESS_KEY}
+
+Contact the repository owner to get the access key.
+
+Or you can create your own Postman collection.
 
 
 
