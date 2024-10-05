@@ -1,20 +1,29 @@
 using Microsoft.EntityFrameworkCore;
 using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Data;
 using TAN_10042024.Application.Services;
-using TAN_10042024.Framework.Middlewares;
-using TAN_10042024.Framework.Repositories;
-using TAN_10042024.Utilities;
+using TAN_10042024.Infrastructure.Data;
+using TAN_10042024.Infrastructure.Data.Queries;
+using TAN_10042024.Infrastructure.Data.Repositories;
+using TAN_10042024.Infrastructure.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>((options) =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CC")));
 
+// Repositories
 builder.Services.AddScoped<ApiSessionsRepository>();
 builder.Services.AddScoped<AuthenticationSessionsRepository>();
 builder.Services.AddScoped<PersonsRepository>();
 builder.Services.AddScoped<FilesRepository>();
+
+// Query Services
+builder.Services.AddScoped<ApiSessionsQueryService>();
+builder.Services.AddScoped<AuthenticationSessionsQueryService>();
+builder.Services.AddScoped<PersonsQueryService>();
+builder.Services.AddScoped<FilesQueryService>();
+
+// Application Services
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IFileUploadService, FileUploadService>();
 builder.Services.AddScoped<IReportService, ReportService>();

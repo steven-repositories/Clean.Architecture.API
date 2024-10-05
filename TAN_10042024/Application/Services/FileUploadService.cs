@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using TAN_10042024.Application.Abstractions;
 using TAN_10042024.Application.Models;
-using TAN_10042024.Framework.Repositories;
+using TAN_10042024.Infrastructure.Data.Repositories;
 
 namespace TAN_10042024.Application.Services {
     public class FileUploadService : IFileUploadService {

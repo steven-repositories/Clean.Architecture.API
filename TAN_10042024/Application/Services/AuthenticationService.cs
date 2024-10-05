@@ -1,16 +1,19 @@
 ﻿using TAN_10042024.Application.Abstractions;
+using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
-using TAN_10042024.Framework.Repositories;
-using TAN_10042024.Utilities;
+using TAN_10042024.Infrastructure.Data.Queries;
+using TAN_10042024.Infrastructure.Data.Repositories;
 
 namespace TAN_10042024.Application.Services {
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly AuthenticationSessionsRepository _authSessionsRepo;
+        private readonly AuthenticationSessionsQueryService _authSessionsQueryService;
 
-        public AuthenticationService(ILogger<AuthenticationService> logger, AuthenticationSessionsRepository authSessionsRepo) {
+        public AuthenticationService(ILogger<AuthenticationService> logger, AuthenticationSessionsRepository authSessionsRepo, AuthenticationSessionsQueryService authSessionsQueryService) {
             _logger = logger;
             _authSessionsRepo = authSessionsRepo;
+            _authSessionsQueryService = authSessionsQueryService;
         }
 
         public async Task<Guid> GenerateKey(string clientName) {
@@ -21,7 +24,7 @@ namespace TAN_10042024.Application.Services {
             var isNew = default(bool);
 
             do {
-                var authSession = await _authSessionsRepo
+                var authSession = await _authSessionsQueryService
                     .GetAuthDetailsByKey(newKey.ToString());
 
                 if (authSession != null) {
@@ -40,7 +43,7 @@ namespace TAN_10042024.Application.Services {
         }
 
         public async Task<AuthenticationSessions?> Authenticate(string key) {
-            return await _authSessionsRepo.GetAuthDetailsByKey(key);
+            return await _authSessionsQueryService.GetAuthDetailsByKey(key);
         }
     }
 }

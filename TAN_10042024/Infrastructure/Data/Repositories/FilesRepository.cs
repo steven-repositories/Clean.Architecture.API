@@ -1,31 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TAN_10042024.Application.Data;
+﻿using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
-using TAN_10042024.Utilities;
-using static TAN_10042024.Utilities.Exceptions;
+using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Framework.Repositories {
-    public class FilesRepository {
+namespace TAN_10042024.Infrastructure.Data.Repositories {
+    public class FilesRepository
+    {
         private readonly ILogger<FilesRepository> _logger;
         private readonly AppDbContext _dbContext;
 
-        public FilesRepository(ILogger<FilesRepository> logger, AppDbContext dbContext) {
+        public FilesRepository(ILogger<FilesRepository> logger, AppDbContext dbContext)
+        {
             _logger = logger;
             _dbContext = dbContext;
         }
 
-        public Task<List<Files>> GetAll() {
-            return _dbContext
-                .Set<Files>()
-                .ToListAsync();
-        }
-
-        public async Task SaveFile(string fileName, string fileContent) {
-            try {
+        public async Task SaveFile(string fileName, string fileContent)
+        {
+            try
+            {
                 _logger.LogInformation("Saving to database the file {0}"
                     .FormatWith(fileName));
 
-                var newFile = new Files() {
+                var newFile = new Files()
+                {
                     FileName = fileName,
                     FileContent = fileContent
                 };
@@ -38,7 +35,9 @@ namespace TAN_10042024.Framework.Repositories {
 
                 _logger.LogInformation("File {0} is saved to database with key of: {1}"
                     .FormatWith(fileName, fileId));
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 var errorMessage = "Error encountered when saving the file: {0}"
                     .FormatWith(e.Message);
 

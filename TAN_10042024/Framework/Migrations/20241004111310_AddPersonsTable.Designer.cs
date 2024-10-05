@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TAN_10042024.Application.Data;
+using TAN_10042024.Infrastructure.Data;
 
 #nullable disable
 
 namespace TAN_10042024.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241003201527_AuthorizationTokensEnhancement")]
-    partial class AuthorizationTokensEnhancement
+    [Migration("20241004111310_AddPersonsTable")]
+    partial class AddPersonsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,35 @@ namespace TAN_10042024.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthorizationTokens", b =>
+            modelBuilder.Entity("TAN_10042024.Domain.Entities.ApiSessions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Method")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ApiSessions");
+                });
+
+            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthenticationSessions", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,17 +67,17 @@ namespace TAN_10042024.Migrations
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("Token")
+                    b.Property<Guid>("Key")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("Token")
+                    b.HasIndex("Key")
                         .IsUnique();
 
-                    b.ToTable("AuthorizationTokens");
+                    b.ToTable("AuthenticationSessions");
                 });
 
             modelBuilder.Entity("TAN_10042024.Domain.Entities.Clients", b =>
@@ -72,7 +100,34 @@ namespace TAN_10042024.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthorizationTokens", b =>
+            modelBuilder.Entity("TAN_10042024.Domain.Entities.Persons", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Team")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Persons");
+                });
+
+            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthenticationSessions", b =>
                 {
                     b.HasOne("TAN_10042024.Domain.Entities.Clients", "Clients")
                         .WithMany()

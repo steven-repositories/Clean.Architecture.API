@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TAN_10042024.Application.Data;
+using TAN_10042024.Infrastructure.Data;
 
 #nullable disable
 
 namespace TAN_10042024.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241003195958_AuthTokens To AuthorizationTokens")]
-    partial class AuthTokensToAuthorizationTokens
+    [Migration("20241003195020_Initial Migration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,7 @@ namespace TAN_10042024.Migrations
                     b.HasIndex("Token")
                         .IsUnique();
 
-                    b.ToTable("AuthorizationTokens");
+                    b.ToTable("AuthTokens");
                 });
 #pragma warning restore 612, 618
         }
