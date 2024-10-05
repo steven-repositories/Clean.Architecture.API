@@ -54,6 +54,8 @@ Right click the Logins folder and select New Login; you decide what would be the
 
 In the codebase, go to the appsettings.json and change the value of "DatabaseName", "User Id", and "Password" for the "CC" connection string.
 
+You need to change the "Server" as well in "CC" connection string based on what is your IPv4 Address. Open your command prompt and execute "ipconfig" command to see what is your IP Address.
+
 
 ## Building the Docker Image
 
