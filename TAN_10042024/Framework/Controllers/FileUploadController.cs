@@ -25,7 +25,12 @@ namespace TAN_10042024.Framework.Controllers {
 
             await _fileUploadService.Upload(file.FileName, (string)fileContent!);
 
-            return Ok();
+            return Ok(new {
+                success = true,
+                data = new {
+                    message = "Successfully uploaded the JSON file!"
+                }
+            });
         }
     }
 }

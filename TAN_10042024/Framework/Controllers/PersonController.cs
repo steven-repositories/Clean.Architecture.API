@@ -17,7 +17,8 @@ namespace TAN_10042024.Framework.Controllers {
                 .GetMaxScoreByTeam(team);
 
             return Ok(new {
-                result = maxScore
+                success = true,
+                data = maxScore
             });
         }
 
@@ -27,7 +28,8 @@ namespace TAN_10042024.Framework.Controllers {
                 .GetSecondToLeastScoreByTeam(team);
 
             return Ok(new {
-                result = secondToLeastScore
+                success = true,
+                data = secondToLeastScore
             });
         }
 
@@ -37,7 +39,8 @@ namespace TAN_10042024.Framework.Controllers {
                 .UnionizePersonNamesByTeam(team);
 
             return Ok(new {
-                result = commpaSeparatedUnionizedNames
+                success = true,
+                data = commpaSeparatedUnionizedNames
             });
         }
     }

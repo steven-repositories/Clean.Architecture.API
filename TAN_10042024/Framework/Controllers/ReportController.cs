@@ -15,7 +15,10 @@ namespace TAN_10042024.Framework.Controllers {
         public async Task<IActionResult> ReportFiles() {
             var files = await _reportService.ReportFiles();
 
-            return Ok(files);
+            return Ok(new {
+                success = true,
+                data = files
+            });
         }
     }
 }
