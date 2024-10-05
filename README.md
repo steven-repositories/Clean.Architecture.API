@@ -21,8 +21,10 @@ The codebase adheres to Clean Architecture principles, ensuring improved code qu
 
 ## Features
 
-- Runs on ASP.NET Core
+- Runs on ASP.NET Core (.NET 8)
 - Containerized with Docker
+- API Key-based Security Mechanism Implementation
+- Uses Entity Framework Core
 
 
 ## Prerequisites
