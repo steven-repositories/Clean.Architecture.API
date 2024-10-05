@@ -31,6 +31,8 @@ Before you begin, ensure you have the following installed:
 - [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Docker Desktop](https://www.docker.com/get-started)
 - [Postman](https://www.postman.com/) (for testing API endpoints)
+- [SSMS](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+- [SQL Server Express](https://www.microsoft.com/en-us/download/details.aspx?id=104781&lc=1033&msockid=22f712c8b3e26fa7318c060db27f6e03)
 
 
 ## Getting Started
@@ -41,6 +43,16 @@ Let's get start by cloning the repository.
 	git clone https://github.com/steven-repositories/TAN_10042024.git
 	cd TAN_10042024
 	```
+
+After cloning the repository, open your SSMS and login into you local server. Usually named as: "localhost".
+
+Create a database; you decide what the database name is. 
+
+After creating a database, you also need to create a login user under the Security > Logins.
+
+Right click the Logins folder and select New Login; you decide what would be the credentials for this login user.
+
+In the codebase, go to the appsettings.json and changed the value of "DatabaseName", "User Id", and "Password" for the "CC" connection string.
 
 
 ## Building the Docker Image
