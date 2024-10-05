@@ -52,7 +52,7 @@ After creating a database, you also need to create a login user under the Securi
 
 Right click the Logins folder and select New Login; you decide what would be the credentials for this login user.
 
-In the codebase, go to the appsettings.json and changed the value of "DatabaseName", "User Id", and "Password" for the "CC" connection string.
+In the codebase, go to the appsettings.json and change the value of "DatabaseName", "User Id", and "Password" for the "CC" connection string.
 
 
 ## Building the Docker Image
