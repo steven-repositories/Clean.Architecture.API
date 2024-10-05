@@ -105,7 +105,7 @@ The endpoints that this application have are:
 	
 2. api/file/upload/persons
 	- Uses to securely upload a JSON file with "persons" in it.
-	- You can download [this](./TAN_10042024/Libraries/Assets/Persons.json) a sample JSON file that can be use for file uploading. 
+	- You can download [this](./TAN_10042024/Libraries/Assets/Persons.json) sample JSON file that can be use for file uploading. 
 	
 3. api/person/{team}/max-score
 	- Uses to get the highest score that a single team have in the database.
