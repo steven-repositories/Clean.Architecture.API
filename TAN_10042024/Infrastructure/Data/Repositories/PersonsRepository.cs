@@ -4,25 +4,19 @@ using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
-    public class PersonsRepository
-    {
+    public class PersonsRepository {
         private readonly ILogger<PersonsRepository> _logger;
         private readonly AppDbContext _dbContext;
 
-        public PersonsRepository(ILogger<PersonsRepository> logger, AppDbContext dbContext)
-        {
+        public PersonsRepository(ILogger<PersonsRepository> logger, AppDbContext dbContext) {
             _logger = logger;
             _dbContext = dbContext;
         }
 
-        public async Task SavePersons(List<Person> persons)
-        {
-            foreach (var person in persons)
-            {
-                try
-                {
-                    var newPerson = new Persons()
-                    {
+        public async Task SavePersons(List<Person> persons) {
+            foreach (var person in persons) {
+                try {
+                    var newPerson = new Persons() {
                         Name = person.Name,
                         Team = person.Team,
                         Score = person.Score ?? default
@@ -39,9 +33,7 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
 
                     _logger.LogInformation("Person {0} details is saved to the database with key of: {1}"
                        .FormatWith(person.Name, personId));
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     var errorMessage = "Error encountered when saving persons: {0}"
                         .FormatWith(e.Message);
 

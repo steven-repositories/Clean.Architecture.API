@@ -3,21 +3,18 @@ using TAN_10042024.Application.Utilities;
 using TAN_10042024.Infrastructure.Data.Repositories;
 
 namespace TAN_10042024.Infrastructure.Middlewares {
-    public class RequestLoggerMiddleware
-    {
+    public class RequestLoggerMiddleware {
         private readonly ILogger<RequestLoggerMiddleware> _logger;
         private readonly RequestDelegate _next;
         private readonly IServiceProvider _serviceProvider;
 
-        public RequestLoggerMiddleware(ILogger<RequestLoggerMiddleware> logger, RequestDelegate next, IServiceProvider serviceProvider)
-        {
+        public RequestLoggerMiddleware(ILogger<RequestLoggerMiddleware> logger, RequestDelegate next, IServiceProvider serviceProvider) {
             _logger = logger;
             _next = next;
             _serviceProvider = serviceProvider;
         }
 
-        public async Task InvokeAsync(HttpContext context)
-        {
+        public async Task InvokeAsync(HttpContext context) {
             var request = context.Request;
             var method = request.Method;
             var url = request.GetDisplayUrl();
@@ -29,12 +26,10 @@ namespace TAN_10042024.Infrastructure.Middlewares {
                 .RouteValues["controller"]!
                 .ToString();
 
-            if (controllerName == "FileUpload")
-            {
-                var form =  request.Form;
+            if (controllerName == "FileUpload") {
+                var form = request.Form;
 
-                if (form.Files.Count > 0)
-                {
+                if (form.Files.Count > 0) {
                     var file = form
                         .Files
                         .FirstOrDefault();

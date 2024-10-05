@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TAN_10042024.Domain.Entities;
 
-namespace TAN_10042024.Infrastructure.Data
-{
-    public class AppDbContext : DbContext
-    {
+namespace TAN_10042024.Infrastructure.Data {
+    public class AppDbContext : DbContext {
         public DbSet<AuthenticationSessions> AuthenticationSessions { get; set; }
         public DbSet<Clients> Clients { get; set; }
         public DbSet<ApiSessions> ApiSessions { get; set; }
@@ -13,8 +11,7 @@ namespace TAN_10042024.Infrastructure.Data
 
         public AppDbContext(DbContextOptions options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<AuthenticationSessions>()
