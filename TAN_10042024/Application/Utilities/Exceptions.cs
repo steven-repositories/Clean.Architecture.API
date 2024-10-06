@@ -10,10 +10,21 @@
         }
 
         /// <summary>
-        /// Repository doing database stuff(s) error occured against the builder.
+        /// Business Logic error occured.
+        /// </summary>
+        public class ServiceException : Exception {
+            //public class ServiceException(Exception innerException = null) : base(innerException) { }
+            /// <param name="message">Exception message</param>
+            /// <param name="innerException">Inner Exception</param>
+            public ServiceException(string message = null, Exception innerException = null) : base(message, innerException) { }
+        }
+
+        /// <summary>
+        /// Repository doing database stuff(s) error occured.
         /// </summary>
         public class RepositoryException : Exception {
             /// <param name="message">Exception message</param>
+            /// <param name="innerException">Inner Exception</param>
             public RepositoryException(string message = null, Exception innerException = null) : base(message, innerException) { }
         }
     }

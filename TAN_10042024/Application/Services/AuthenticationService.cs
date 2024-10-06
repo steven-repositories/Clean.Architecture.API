@@ -3,20 +3,30 @@ using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using TAN_10042024.Infrastructure.Data.Queries;
 using TAN_10042024.Infrastructure.Data.Repositories;
+using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Application.Services {
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly AuthenticationSessionsRepository _authSessionsRepo;
         private readonly AuthenticationSessionsQueryService _authSessionsQueryService;
+        private readonly ClientsQueryService _clientsQueryService;
 
-        public AuthenticationService(ILogger<AuthenticationService> logger, AuthenticationSessionsRepository authSessionsRepo, AuthenticationSessionsQueryService authSessionsQueryService) {
+        public AuthenticationService(ILogger<AuthenticationService> logger, AuthenticationSessionsRepository authSessionsRepo,
+            AuthenticationSessionsQueryService authSessionsQueryService, ClientsQueryService clientsQueryService) {
             _logger = logger;
             _authSessionsRepo = authSessionsRepo;
             _authSessionsQueryService = authSessionsQueryService;
+            _clientsQueryService = clientsQueryService;
         }
 
         public async Task<Guid> GenerateKey(string clientName) {
+            var client = _clientsQueryService.GetClientByName(clientName);
+
+            if (client == null) {
+                throw new ServiceException("Client cannot be found.");
+            }
+
             _logger.LogInformation("Generating new authentication key for client {0}..."
                 .FormatWith(clientName));
 

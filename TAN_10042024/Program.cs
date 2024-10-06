@@ -22,6 +22,7 @@ builder.Services.AddScoped<ApiSessionsQueryService>();
 builder.Services.AddScoped<AuthenticationSessionsQueryService>();
 builder.Services.AddScoped<PersonsQueryService>();
 builder.Services.AddScoped<FilesQueryService>();
+builder.Services.AddScoped<ClientsQueryService>();
 
 // Application Services
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
