@@ -21,7 +21,7 @@ namespace TAN_10042024.Application.Services {
         }
 
         public async Task<Guid> GenerateKey(string clientName) {
-            var client = _clientsQueryService.GetClientByName(clientName);
+            var client = await _clientsQueryService.GetClientByName(clientName);
 
             if (client == null) {
                 throw new ServiceException("Client cannot be found.");
