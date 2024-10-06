@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using TAN_10042024.Application.Abstractions;
+using TAN_10042024.Domain.Abstractions;
 
-namespace TAN_10042024.Domain.Entities {
+namespace TAN_10042024.Domain.Entities
+{
     public abstract class Entity : IEntity {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
