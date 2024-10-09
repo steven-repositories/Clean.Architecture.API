@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Queries {
-    public class AuthenticationSessionsQueryService {
+    public class AuthenticationSessionsQueryService : IAuthenticationSessionsQueryService {
         private readonly ILogger<AuthenticationSessionsQueryService> _logger;
         private readonly AppDbContext _dbContext;
 

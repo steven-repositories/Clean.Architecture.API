@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Domain.Entities;
 
 namespace TAN_10042024.Infrastructure.Data.Queries {
-    public class ClientsQueryService {
+    public class ClientsQueryService : IClientsQueryService {
         private readonly ILogger<ClientsQueryService> _logger;
         private readonly AppDbContext _dbContext;
 

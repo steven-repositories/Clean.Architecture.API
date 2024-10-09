@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TAN_10042024.Application.Abstractions;
+using TAN_10042024.Application.Abstractions.Controllers;
 
-namespace TAN_10042024.Framework.Controllers {
+namespace TAN_10042024.Framework.Controllers
+{
     [Route("api/person")]
     [ApiController, Produces("application/json")]
     public class PersonController : ControllerBase {

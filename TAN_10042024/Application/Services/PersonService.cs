@@ -1,4 +1,4 @@
-﻿using TAN_10042024.Application.Abstractions;
+﻿using TAN_10042024.Application.Abstractions.Controllers;
 using TAN_10042024.Infrastructure.Data.Queries;
 using TAN_10042024.Infrastructure.Data.Repositories;
 

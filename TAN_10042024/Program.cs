@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using TAN_10042024.Application.Abstractions;
+using TAN_10042024.Application.Abstractions.Controllers;
+using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Services;
 using TAN_10042024.Infrastructure.Data;
 using TAN_10042024.Infrastructure.Data.Queries;
@@ -18,11 +19,11 @@ builder.Services.AddScoped<PersonsRepository>();
 builder.Services.AddScoped<FilesRepository>();
 
 // Query Services
-builder.Services.AddScoped<ApiSessionsQueryService>();
-builder.Services.AddScoped<AuthenticationSessionsQueryService>();
-builder.Services.AddScoped<PersonsQueryService>();
-builder.Services.AddScoped<FilesQueryService>();
-builder.Services.AddScoped<ClientsQueryService>();
+builder.Services.AddScoped<IApiSessionsQueryService, ApiSessionsQueryService>();
+builder.Services.AddScoped<IAuthenticationSessionsQueryService, AuthenticationSessionsQueryService>();
+builder.Services.AddScoped<IPersonsQueryService, PersonsQueryService>();
+builder.Services.AddScoped<IFilesQueryService, FilesQueryService>();
+builder.Services.AddScoped<IClientsQueryService, ClientsQueryService>();
 
 // Application Services
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();

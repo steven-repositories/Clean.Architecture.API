@@ -1,11 +1,12 @@
-﻿using TAN_10042024.Application.Abstractions;
+﻿using TAN_10042024.Application.Abstractions.Controllers;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using TAN_10042024.Infrastructure.Data.Queries;
 using TAN_10042024.Infrastructure.Data.Repositories;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Application.Services {
+namespace TAN_10042024.Application.Services
+{
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly AuthenticationSessionsRepository _authSessionsRepo;

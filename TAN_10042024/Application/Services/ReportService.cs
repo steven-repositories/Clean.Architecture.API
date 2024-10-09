@@ -1,9 +1,10 @@
-﻿using TAN_10042024.Application.Abstractions;
+﻿using TAN_10042024.Application.Abstractions.Controllers;
 using TAN_10042024.Application.Models;
 using TAN_10042024.Infrastructure.Data.Queries;
 using TAN_10042024.Infrastructure.Data.Repositories;
 
-namespace TAN_10042024.Application.Services {
+namespace TAN_10042024.Application.Services
+{
     public class ReportService : IReportService {
         private readonly ILogger<ReportService> _logger;
         private readonly FilesRepository _filesRepo;
