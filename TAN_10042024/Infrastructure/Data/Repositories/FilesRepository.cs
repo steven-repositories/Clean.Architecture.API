@@ -1,9 +1,10 @@
-﻿using TAN_10042024.Application.Utilities;
+﻿using TAN_10042024.Application.Abstractions.Repositories;
+using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
-    public class FilesRepository {
+    public class FilesRepository : IFilesRepository {
         private readonly ILogger<FilesRepository> _logger;
         private readonly AppDbContext _dbContext;
 

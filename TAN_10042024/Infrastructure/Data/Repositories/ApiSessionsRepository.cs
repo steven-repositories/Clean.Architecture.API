@@ -1,9 +1,10 @@
-﻿using TAN_10042024.Application.Utilities;
+﻿using TAN_10042024.Application.Abstractions.Repositories;
+using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
-    public class ApiSessionsRepository {
+    public class ApiSessionsRepository : IApiSessionsRepository {
         private readonly ILogger<ApiSessionsRepository> _logger;
         private readonly AppDbContext _dbContext;
 
@@ -12,7 +13,7 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
             _dbContext = dbContext;
         }
 
-        public void SaveApiSession(string method, string url) {
+        public async Task SaveApiSession(string method, string url) {
             _logger.LogInformation("Saving to database the api session.");
 
             try {
@@ -21,11 +22,11 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
                     URL = url
                 };
 
-                _dbContext
+                await _dbContext
                     .Set<ApiSessions>()
-                    .Add(apiSession);
+                    .AddAsync(apiSession);
 
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
 
                 _logger.LogInformation("Api Session is saved to database!");
             } catch (Exception e) {

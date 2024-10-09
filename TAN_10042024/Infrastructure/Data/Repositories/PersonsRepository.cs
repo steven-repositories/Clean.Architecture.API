@@ -1,10 +1,11 @@
-﻿using TAN_10042024.Application.Models;
+﻿using TAN_10042024.Application.Abstractions.Repositories;
+using TAN_10042024.Application.Models;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
-    public class PersonsRepository {
+    public class PersonsRepository : IPersonsRepository {
         private readonly ILogger<PersonsRepository> _logger;
         private readonly AppDbContext _dbContext;
 
