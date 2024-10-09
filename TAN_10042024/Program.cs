@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TAN_10042024.Application.Abstractions.Controllers;
 using TAN_10042024.Application.Abstractions.Queries;
+using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Services;
 using TAN_10042024.Infrastructure.Data;
 using TAN_10042024.Infrastructure.Data.Queries;
@@ -13,10 +14,10 @@ builder.Services.AddDbContext<AppDbContext>((options) =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CC")));
 
 // Repositories
-builder.Services.AddScoped<ApiSessionsRepository>();
-builder.Services.AddScoped<AuthenticationSessionsRepository>();
-builder.Services.AddScoped<PersonsRepository>();
-builder.Services.AddScoped<FilesRepository>();
+builder.Services.AddScoped<IApiSessionsRepository, ApiSessionsRepository>();
+builder.Services.AddScoped<IAuthenticationSessionsRepository, AuthenticationSessionsRepository>();
+builder.Services.AddScoped<IPersonsRepository, PersonsRepository>();
+builder.Services.AddScoped<IFilesRepository, FilesRepository>();
 
 // Query Services
 builder.Services.AddScoped<IApiSessionsQueryService, ApiSessionsQueryService>();
