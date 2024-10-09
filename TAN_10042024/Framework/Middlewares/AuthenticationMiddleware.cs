@@ -24,7 +24,7 @@ namespace TAN_10042024.Infrastructure.Middlewares
                     .Request
                     .Headers;
 
-                if (!headers.TryGetValue("Auth-Key", out var key)) {
+                if (!headers.TryGetValue(Constants.AUTH_HEADER_KEY, out var key)) {
                     context.Response.StatusCode = StatusCodes.Status401Unauthorized;
 
                     var unauthorizedResponse = new ErrorResponse() {
