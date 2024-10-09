@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 using TAN_10042024.Application.Abstractions.Controllers;
+using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Models;
-using TAN_10042024.Infrastructure.Data.Repositories;
 
-namespace TAN_10042024.Application.Services
-{
+namespace TAN_10042024.Application.Services {
     public class FileUploadService : IFileUploadService {
         private readonly ILogger<FileUploadService> _logger;
-        private readonly PersonsRepository _personsRepo;
-        private readonly FilesRepository _filesRepo;
+        private readonly IPersonsRepository _personsRepo;
+        private readonly IFilesRepository _filesRepo;
 
-        public FileUploadService(ILogger<FileUploadService> logger, PersonsRepository personsRepo, FilesRepository filesRepo) {
+        public FileUploadService(ILogger<FileUploadService> logger, IPersonsRepository personsRepo, IFilesRepository filesRepo) {
             _logger = logger;
             _personsRepo = personsRepo;
             _filesRepo = filesRepo;
