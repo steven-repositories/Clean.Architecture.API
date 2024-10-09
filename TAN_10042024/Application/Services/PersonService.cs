@@ -1,15 +1,14 @@
 ﻿using TAN_10042024.Application.Abstractions.Controllers;
-using TAN_10042024.Infrastructure.Data.Queries;
+using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Infrastructure.Data.Repositories;
 
-namespace TAN_10042024.Application.Services
-{
+namespace TAN_10042024.Application.Services {
     public class PersonService : IPersonService {
         private readonly ILogger<PersonService> _logger;
         private readonly PersonsRepository _personsRepo;
-        private readonly PersonsQueryService _personsQueryService;
+        private readonly IPersonsQueryService _personsQueryService;
 
-        public PersonService(ILogger<PersonService> logger, PersonsRepository personsRepo, PersonsQueryService personsQueryService) {
+        public PersonService(ILogger<PersonService> logger, PersonsRepository personsRepo, IPersonsQueryService personsQueryService) {
             _logger = logger;
             _personsRepo = personsRepo;
             _personsQueryService = personsQueryService;

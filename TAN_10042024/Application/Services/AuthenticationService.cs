@@ -1,20 +1,19 @@
 ﻿using TAN_10042024.Application.Abstractions.Controllers;
+using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
-using TAN_10042024.Infrastructure.Data.Queries;
 using TAN_10042024.Infrastructure.Data.Repositories;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Application.Services
-{
+namespace TAN_10042024.Application.Services {
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly AuthenticationSessionsRepository _authSessionsRepo;
-        private readonly AuthenticationSessionsQueryService _authSessionsQueryService;
-        private readonly ClientsQueryService _clientsQueryService;
+        private readonly IAuthenticationSessionsQueryService _authSessionsQueryService;
+        private readonly IClientsQueryService _clientsQueryService;
 
         public AuthenticationService(ILogger<AuthenticationService> logger, AuthenticationSessionsRepository authSessionsRepo,
-            AuthenticationSessionsQueryService authSessionsQueryService, ClientsQueryService clientsQueryService) {
+            IAuthenticationSessionsQueryService authSessionsQueryService, IClientsQueryService clientsQueryService) {
             _logger = logger;
             _authSessionsRepo = authSessionsRepo;
             _authSessionsQueryService = authSessionsQueryService;
