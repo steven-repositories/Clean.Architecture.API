@@ -142,4 +142,4 @@ For example (in procedure):
 	- This will return an "access_key" field in the response body.
 
 2. Let's say you're going to execute "api/file/upload/persons" endpoint. Before executing the endpoint, add first "Auth-Key" header in the request with a value that is from "access_key" of #1 response.
-	- This will a response body that containts "success" and "data" fields indicating if it is a success or not and a message inside the data field.
+	- This will return a response body that containts "success" and "data" fields indicating if it is a success or not and a message inside the data field.
