@@ -2,8 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using TAN_10042024.Application.Abstractions;
 using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Abstractions.Repositories;
-using TAN_10042024.Application.Mappers;
-using TAN_10042024.Application.Profiles;
 using TAN_10042024.Application.Services;
 using TAN_10042024.Infrastructure.Data;
 using TAN_10042024.Infrastructure.Data.Queries;
@@ -14,13 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>((options) =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CC")));
-
-// Profile Mappers
-builder.Services.AddAutoMapper(typeof(ApiSessionProfile));
-builder.Services.AddAutoMapper(typeof(AuthenticationSessionProfile));
-builder.Services.AddAutoMapper(typeof(ClientProfile));
-builder.Services.AddAutoMapper(typeof(FileProfile));
-builder.Services.AddAutoMapper(typeof(PersonProfile));
 
 // Repositories
 builder.Services.AddScoped<IApiSessionRepository, ApiSessionRepository>();
