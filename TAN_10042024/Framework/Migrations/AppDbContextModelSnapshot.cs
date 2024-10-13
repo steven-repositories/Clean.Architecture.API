@@ -43,7 +43,7 @@ namespace TAN_10042024.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ApiSessions");
+                    b.ToTable("ApiSessions", (string)null);
                 });
 
             modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthenticationSessions", b =>
@@ -70,7 +70,7 @@ namespace TAN_10042024.Migrations
                     b.HasIndex("Key")
                         .IsUnique();
 
-                    b.ToTable("AuthenticationSessions");
+                    b.ToTable("AuthenticationSessions", (string)null);
                 });
 
             modelBuilder.Entity("TAN_10042024.Domain.Entities.Clients", b =>
@@ -90,7 +90,7 @@ namespace TAN_10042024.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Clients", (string)null);
                 });
 
             modelBuilder.Entity("TAN_10042024.Domain.Entities.Files", b =>
@@ -114,7 +114,7 @@ namespace TAN_10042024.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Files");
+                    b.ToTable("Files", (string)null);
                 });
 
             modelBuilder.Entity("TAN_10042024.Domain.Entities.Persons", b =>
@@ -141,7 +141,7 @@ namespace TAN_10042024.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Persons");
+                    b.ToTable("Persons", (string)null);
                 });
 
             modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthenticationSessions", b =>

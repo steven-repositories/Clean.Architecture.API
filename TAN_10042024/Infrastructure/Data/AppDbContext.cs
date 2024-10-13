@@ -14,47 +14,49 @@ namespace TAN_10042024.Infrastructure.Data {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
 
-            #region AuthenticationSession Schema
-            modelBuilder.Entity<AuthenticationSessionSchema>()
-                .Property(auth => auth.Key)
-                .IsRequired();
-            #endregion
+            modelBuilder.Entity<AuthenticationSessionSchema>(schema => {
+                schema
+                    .Property(auth => auth.Key)
+                    .IsRequired();
 
-            #region Client Schema
+                schema
+                    .HasIndex(auth => auth.Key)
+                    .IsUnique();
+            });
+
             modelBuilder.Entity<ClientSchema>()
                 .Property(client => client.Name)
                 .IsRequired();
-            #endregion
 
-            #region ApiSession Schema
-            modelBuilder.Entity<ApiSessionSchema>()
-                .Property(apiSession => apiSession.Method)
-                .IsRequired();
+            modelBuilder.Entity<ApiSessionSchema>(schema => {
+                schema
+                    .Property(apiSession => apiSession.Method)
+                    .IsRequired();
 
-            modelBuilder.Entity<ApiSessionSchema>()
-                .Property(apiSession => apiSession.URL)
-                .IsRequired();
-            #endregion
+                schema
+                    .Property(apiSession => apiSession.URL)
+                    .IsRequired();
+            });
 
-            #region Person Schema
-            modelBuilder.Entity<PersonSchema>()
-                .Property(person => person.Name)
-                .IsRequired();
+            modelBuilder.Entity<PersonSchema>(schema => {
+                schema
+                    .Property(person => person.Name)
+                    .IsRequired();
 
-            modelBuilder.Entity<PersonSchema>()
-                .Property(person => person.Team)
-                .IsRequired();
-            #endregion
+                schema
+                    .Property(person => person.Team)
+                    .IsRequired();
+            });
 
-            #region File Schema
-            modelBuilder.Entity<FileSchema>()
-                .Property(file => file.Name)
-                .IsRequired();
+            modelBuilder.Entity<FileSchema>(schema => {
+                schema
+                    .Property(file => file.Name)
+                    .IsRequired();
 
-            modelBuilder.Entity<FileSchema>()
-                .Property(file => file.Content)
-                .IsRequired();
-            #endregion
+                schema
+                    .Property(file => file.Content)
+                    .IsRequired();
+            });
         }
     }
 }
