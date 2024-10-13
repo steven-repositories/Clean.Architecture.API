@@ -19,7 +19,10 @@ namespace TAN_10042024.Application.Builders {
         public override AuthenticationSession Build() {
             base.Build();
 
-            return new AuthenticationSession();
+            return new AuthenticationSession() {
+                Key = _key,
+                Client = _client
+            };
         }
 
         protected override void SetupValidations() {

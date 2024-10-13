@@ -20,7 +20,10 @@ namespace TAN_10042024.Application.Builders {
         public override File Build() {
             base.Build();
 
-            return new File();
+            return new File() {
+                Name = _name,
+                Content = _content
+            };
         }
 
         protected override void SetupValidations() {
