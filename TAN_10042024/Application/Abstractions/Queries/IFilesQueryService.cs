@@ -2,6 +2,6 @@
 
 namespace TAN_10042024.Application.Abstractions.Queries {
     public interface IFilesQueryService {
-        Task<List<Files>> GetAll();
+        Task<List<FilesSchema>> GetAll();
     }
 }

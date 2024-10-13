@@ -12,9 +12,9 @@ namespace TAN_10042024.Infrastructure.Data.Queries {
             _dbContext = dbContext;
         }
 
-        public Task<List<Files>> GetAll() {
+        public Task<List<FilesSchema>> GetAll() {
             return _dbContext
-                .Set<Files>()
+                .Set<FilesSchema>()
                 .ToListAsync();
         }
     }

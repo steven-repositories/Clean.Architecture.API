@@ -52,7 +52,7 @@ namespace TAN_10042024.Application.Services {
             return newKey;
         }
 
-        public async Task<AuthenticationSessions?> Authenticate(string key) {
+        public async Task<AuthenticationSessionsSchema?> Authenticate(string key) {
             return await _authSessionsQueryService.GetAuthDetailsByKey(key);
         }
     }

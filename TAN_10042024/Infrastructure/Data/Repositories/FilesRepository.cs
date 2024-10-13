@@ -18,13 +18,13 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
                 _logger.LogInformation("Saving to database the file {0}"
                     .FormatWith(fileName));
 
-                var newFile = new Files() {
+                var newFile = new FilesSchema() {
                     FileName = fileName,
                     FileContent = fileContent
                 };
 
                 await _dbContext
-                    .Set<Files>()
+                    .Set<FilesSchema>()
                     .AddAsync(newFile);
 
                 var fileId = await _dbContext.SaveChangesAsync();

@@ -1,10 +1,10 @@
 ﻿using TAN_10042024.Application.Abstractions.Repositories;
-using TAN_10042024.Application.Models;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Infrastructure.Data.Repositories {
+namespace TAN_10042024.Infrastructure.Data.Repositories
+{
     public class PersonsRepository : IPersonsRepository {
         private readonly ILogger<PersonsRepository> _logger;
         private readonly AppDbContext _dbContext;
@@ -17,7 +17,7 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
         public async Task SavePersons(List<Person> persons) {
             foreach (var person in persons) {
                 try {
-                    var newPerson = new Persons() {
+                    var newPerson = new PersonsSchema() {
                         Name = person.Name,
                         Team = person.Team,
                         Score = person.Score ?? default
@@ -27,7 +27,7 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
                         .FormatWith(person.Name));
 
                     await _dbContext
-                        .Set<Persons>()
+                        .Set<PersonsSchema>()
                         .AddAsync(newPerson);
 
                     var personId = await _dbContext.SaveChangesAsync();

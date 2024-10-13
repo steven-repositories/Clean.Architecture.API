@@ -4,7 +4,7 @@ using TAN_10042024.Domain.Abstractions;
 
 namespace TAN_10042024.Domain.Entities
 {
-    public abstract class Entity : IEntity {
+    public abstract class Schema : ISchema {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; protected set; }
@@ -13,7 +13,7 @@ namespace TAN_10042024.Domain.Entities
         [NotMapped]
         public bool IsNew { get; private set; }
 
-        public Entity() {
+        public Schema() {
             CreatedDateTime = DateTime.Now;
             IsNew = Id == default;
         }
