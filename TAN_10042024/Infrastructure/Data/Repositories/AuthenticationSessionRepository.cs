@@ -4,11 +4,11 @@ using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
-    public class AuthenticationSessionsRepository : IAuthenticationSessionsRepository {
-        private readonly ILogger<AuthenticationSessionsRepository> _logger;
+    public class AuthenticationSessionRepository : IAuthenticationSessionRepository {
+        private readonly ILogger<AuthenticationSessionRepository> _logger;
         private readonly AppDbContext _dbContext;
 
-        public AuthenticationSessionsRepository(ILogger<AuthenticationSessionsRepository> logger, AppDbContext dbContext) {
+        public AuthenticationSessionRepository(ILogger<AuthenticationSessionRepository> logger, AppDbContext dbContext) {
             _logger = logger;
             _dbContext = dbContext;
         }

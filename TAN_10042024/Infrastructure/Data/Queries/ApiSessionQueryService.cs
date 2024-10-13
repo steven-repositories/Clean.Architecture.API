@@ -3,19 +3,18 @@ using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Domain.Entities;
 
 namespace TAN_10042024.Infrastructure.Data.Queries {
-    public class PersonsQueryService : IPersonsQueryService {
-        private ILogger<PersonsQueryService> _logger;
+    public class ApiSessionQueryService : IApiSessionQueryService {
+        private readonly ILogger<ApiSessionQueryService> _logger;
         private readonly AppDbContext _dbContext;
 
-        public PersonsQueryService(ILogger<PersonsQueryService> logger, AppDbContext dbContext) {
+        public ApiSessionQueryService(ILogger<ApiSessionQueryService> logger, AppDbContext dbContext) {
             _logger = logger;
             _dbContext = dbContext;
         }
 
-        public Task<List<Person>> GetPersonsByTeam(string team) {
+        public Task<List<ApiSession>> GetAll() {
             return _dbContext
-                .Set<Person>()
-                .Where(person => person.Team == team)
+                .Set<ApiSession>()
                 .ToListAsync();
         }
     }

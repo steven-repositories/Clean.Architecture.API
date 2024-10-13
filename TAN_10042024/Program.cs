@@ -23,17 +23,17 @@ builder.Services.AddAutoMapper(typeof(FileProfile));
 builder.Services.AddAutoMapper(typeof(PersonProfile));
 
 // Repositories
-builder.Services.AddScoped<IApiSessionsRepository, ApiSessionsRepository>();
-builder.Services.AddScoped<IAuthenticationSessionsRepository, AuthenticationSessionsRepository>();
-builder.Services.AddScoped<IPersonsRepository, PersonsRepository>();
-builder.Services.AddScoped<IFilesRepository, FilesRepository>();
+builder.Services.AddScoped<IApiSessionRepository, ApiSessionRepository>();
+builder.Services.AddScoped<IAuthenticationSessionRepository, AuthenticationSessionRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IFileRepository, FileRepository>();
 
 // Query Services
-builder.Services.AddScoped<IApiSessionsQueryService, ApiSessionsQueryService>();
-builder.Services.AddScoped<IAuthenticationSessionsQueryService, AuthenticationSessionsQueryService>();
-builder.Services.AddScoped<IPersonsQueryService, PersonsQueryService>();
-builder.Services.AddScoped<IFilesQueryService, FilesQueryService>();
-builder.Services.AddScoped<IClientsQueryService, ClientsQueryService>();
+builder.Services.AddScoped<IApiSessionQueryService, ApiSessionQueryService>();
+builder.Services.AddScoped<IAuthenticationSessionQueryService, AuthenticationSessionQueryService>();
+builder.Services.AddScoped<IPersonQueryService, PersonQueryService>();
+builder.Services.AddScoped<IFileQueryService, FileQueryService>();
+builder.Services.AddScoped<IClientQueryService, ClientQueryService>();
 
 // Application Services
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();

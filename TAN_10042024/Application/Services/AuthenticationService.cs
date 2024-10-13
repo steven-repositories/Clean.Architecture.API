@@ -9,12 +9,12 @@ namespace TAN_10042024.Application.Services
 {
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
-        private readonly IAuthenticationSessionsRepository _authSessionsRepo;
-        private readonly IAuthenticationSessionsQueryService _authSessionsQueryService;
-        private readonly IClientsQueryService _clientsQueryService;
+        private readonly IAuthenticationSessionRepository _authSessionsRepo;
+        private readonly IAuthenticationSessionQueryService _authSessionsQueryService;
+        private readonly IClientQueryService _clientsQueryService;
 
-        public AuthenticationService(ILogger<AuthenticationService> logger, IAuthenticationSessionsRepository authSessionsRepo,
-            IAuthenticationSessionsQueryService authSessionsQueryService, IClientsQueryService clientsQueryService) {
+        public AuthenticationService(ILogger<AuthenticationService> logger, IAuthenticationSessionRepository authSessionsRepo,
+            IAuthenticationSessionQueryService authSessionsQueryService, IClientQueryService clientsQueryService) {
             _logger = logger;
             _authSessionsRepo = authSessionsRepo;
             _authSessionsQueryService = authSessionsQueryService;

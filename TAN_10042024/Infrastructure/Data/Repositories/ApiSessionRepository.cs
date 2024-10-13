@@ -4,11 +4,11 @@ using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
-    public class ApiSessionsRepository : IApiSessionsRepository {
-        private readonly ILogger<ApiSessionsRepository> _logger;
+    public class ApiSessionRepository : IApiSessionRepository {
+        private readonly ILogger<ApiSessionRepository> _logger;
         private readonly AppDbContext _dbContext;
 
-        public ApiSessionsRepository(ILogger<ApiSessionsRepository> logger, AppDbContext dbContext) {
+        public ApiSessionRepository(ILogger<ApiSessionRepository> logger, AppDbContext dbContext) {
             _logger = logger;
             _dbContext = dbContext;
         }

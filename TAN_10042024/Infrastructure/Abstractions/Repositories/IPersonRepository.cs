@@ -2,7 +2,7 @@
 
 namespace TAN_10042024.Application.Abstractions.Repositories
 {
-    public interface IPersonsRepository {
+    public interface IPersonRepository {
         Task SavePersons(List<Person> persons);
     }
 }

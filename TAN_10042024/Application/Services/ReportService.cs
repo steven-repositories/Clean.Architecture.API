@@ -7,10 +7,10 @@ namespace TAN_10042024.Application.Services
 {
     public class ReportService : IReportService {
         private readonly ILogger<ReportService> _logger;
-        private readonly IFilesRepository _filesRepo;
-        private readonly IFilesQueryService _filesQueryService;
+        private readonly IFileRepository _filesRepo;
+        private readonly IFileQueryService _filesQueryService;
 
-        public ReportService(ILogger<ReportService> logger, IFilesRepository filesRepo, IFilesQueryService filesQueryService) {
+        public ReportService(ILogger<ReportService> logger, IFileRepository filesRepo, IFileQueryService filesQueryService) {
             _logger = logger;
             _filesRepo = filesRepo;
             _filesQueryService = filesQueryService;

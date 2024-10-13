@@ -5,11 +5,11 @@ using static TAN_10042024.Application.Utilities.Exceptions;
 using File = TAN_10042024.Domain.Entities.File;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
-    public class FilesRepository : IFilesRepository {
-        private readonly ILogger<FilesRepository> _logger;
+    public class FileRepository : IFileRepository {
+        private readonly ILogger<FileRepository> _logger;
         private readonly AppDbContext _dbContext;
 
-        public FilesRepository(ILogger<FilesRepository> logger, AppDbContext dbContext) {
+        public FileRepository(ILogger<FileRepository> logger, AppDbContext dbContext) {
             _logger = logger;
             _dbContext = dbContext;
         }

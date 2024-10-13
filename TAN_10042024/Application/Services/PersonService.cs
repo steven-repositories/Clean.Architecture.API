@@ -5,10 +5,10 @@ using TAN_10042024.Application.Abstractions.Repositories;
 namespace TAN_10042024.Application.Services {
     public class PersonService : IPersonService {
         private readonly ILogger<PersonService> _logger;
-        private readonly IPersonsRepository _personsRepo;
-        private readonly IPersonsQueryService _personsQueryService;
+        private readonly IPersonRepository _personsRepo;
+        private readonly IPersonQueryService _personsQueryService;
 
-        public PersonService(ILogger<PersonService> logger, IPersonsRepository personsRepo, IPersonsQueryService personsQueryService) {
+        public PersonService(ILogger<PersonService> logger, IPersonRepository personsRepo, IPersonQueryService personsQueryService) {
             _logger = logger;
             _personsRepo = personsRepo;
             _personsQueryService = personsQueryService;

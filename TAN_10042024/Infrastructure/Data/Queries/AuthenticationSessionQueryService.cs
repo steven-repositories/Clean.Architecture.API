@@ -5,11 +5,11 @@ using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Queries {
-    public class AuthenticationSessionsQueryService : IAuthenticationSessionsQueryService {
-        private readonly ILogger<AuthenticationSessionsQueryService> _logger;
+    public class AuthenticationSessionQueryService : IAuthenticationSessionQueryService {
+        private readonly ILogger<AuthenticationSessionQueryService> _logger;
         private readonly AppDbContext _dbContext;
 
-        public AuthenticationSessionsQueryService(ILogger<AuthenticationSessionsQueryService> logger, AppDbContext dbContext) {
+        public AuthenticationSessionQueryService(ILogger<AuthenticationSessionQueryService> logger, AppDbContext dbContext) {
             _logger = logger;
             _dbContext = dbContext;
         }

@@ -7,10 +7,10 @@ namespace TAN_10042024.Application.Services
 {
     public class FileUploadService : IFileUploadService {
         private readonly ILogger<FileUploadService> _logger;
-        private readonly IPersonsRepository _personsRepo;
-        private readonly IFilesRepository _filesRepo;
+        private readonly IPersonRepository _personsRepo;
+        private readonly IFileRepository _filesRepo;
 
-        public FileUploadService(ILogger<FileUploadService> logger, IPersonsRepository personsRepo, IFilesRepository filesRepo) {
+        public FileUploadService(ILogger<FileUploadService> logger, IPersonRepository personsRepo, IFileRepository filesRepo) {
             _logger = logger;
             _personsRepo = personsRepo;
             _filesRepo = filesRepo;

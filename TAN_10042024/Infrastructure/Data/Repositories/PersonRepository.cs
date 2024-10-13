@@ -4,11 +4,11 @@ using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
-    public class PersonsRepository : IPersonsRepository {
-        private readonly ILogger<PersonsRepository> _logger;
+    public class PersonRepository : IPersonRepository {
+        private readonly ILogger<PersonRepository> _logger;
         private readonly AppDbContext _dbContext;
 
-        public PersonsRepository(ILogger<PersonsRepository> logger, AppDbContext dbContext) {
+        public PersonRepository(ILogger<PersonRepository> logger, AppDbContext dbContext) {
             _logger = logger;
             _dbContext = dbContext;
         }
