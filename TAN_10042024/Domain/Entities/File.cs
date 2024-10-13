@@ -1,7 +1,7 @@
 ﻿using TAN_10042024.Domain.Abstractions;
 
 namespace TAN_10042024.Domain.Entities {
-    public class File : IEntity {
+    public class File : ISchema {
         public int Id { get; private set; }
         public string? Name { get; private set; }
         public string? Content { get; private set; }

@@ -1,10 +1,10 @@
 ﻿using TAN_10042024.Domain.Abstractions;
 
 namespace TAN_10042024.Domain.Entities {
-    public class AuthenticationSession : IEntity {
+    public class AuthenticationSession : ISchema {
         public int Id { get; private set; }
         public Guid Key { get; private set; }
-        public Client? Client { get; private set; }
+        public virtual Client Client { get; private set; }
         public DateTime CreatedDateTime { get; private set; }
 
         public AuthenticationSession WithKey(Guid key) {
@@ -12,7 +12,7 @@ namespace TAN_10042024.Domain.Entities {
             return this;
         }
 
-        public AuthenticationSession WithClient(Client? client) {
+        public AuthenticationSession WithClient(Client client) {
             Client = client;
             return this;
         }
