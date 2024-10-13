@@ -10,6 +10,10 @@ namespace TAN_10042024.Domain.Entities {
         // Navigation mapper
         public virtual ICollection<AuthenticationSession>? AuthenticationSessions { get; set; }
 
+        public Client() {
+            CreatedDateTime = DateTime.Now;
+        }
+
         public Client WithName(string name) {
             Name = name;
             return this;
