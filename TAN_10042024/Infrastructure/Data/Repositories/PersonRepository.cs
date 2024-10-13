@@ -1,4 +1,5 @@
 ﻿using TAN_10042024.Application.Abstractions.Repositories;
+using TAN_10042024.Application.Builders;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
@@ -19,10 +20,12 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
                     _logger.LogInformation("Adding person {0} details to the database..."
                         .FormatWith(person.Name!));
 
-                    var newPerson = new Person()
+                    var newPerson = PersonBuilder
+                        .Initialize()
                         .WithName(person.Name!)
                         .WithTeam(person.Team!)
-                        .WithScore(person.Score!);
+                        .WithScore(person.Score!)
+                        .Build();
 
                     await _dbContext
                         .Set<Person>()

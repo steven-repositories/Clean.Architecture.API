@@ -1,4 +1,5 @@
 ﻿using TAN_10042024.Application.Abstractions.Repositories;
+using TAN_10042024.Application.Builders;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
@@ -23,13 +24,15 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
                     .Where(client => client.Name == clientName)
                     .FirstOrDefault()!;
 
-                var authSession = new AuthenticationSession()
+                var newAuthSession = AuthenticationSessionBuilder
+                    .Initialize()
                     .WithKey(key)
-                    .WithClient(client);
+                    .WithClient(client)
+                    .Build();
 
                 await _dbContext
                     .Set<AuthenticationSession>()
-                    .AddAsync(authSession);
+                    .AddAsync(newAuthSession);
 
                 var authId = await _dbContext.SaveChangesAsync();
 

@@ -1,4 +1,5 @@
 ﻿using TAN_10042024.Application.Abstractions.Repositories;
+using TAN_10042024.Application.Builders;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
@@ -17,13 +18,15 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
             _logger.LogInformation("Saving to database the api session.");
 
             try {
-                var apiSession = new ApiSession()
+                var newApiSession = ApiSessionBuilder
+                    .Initialize()
                     .WithMethod(method)
-                    .WithURL(url);
+                    .WithURL(url)
+                    .Build();
 
                 await _dbContext
                     .Set<ApiSession>()
-                    .AddAsync(apiSession);
+                    .AddAsync(newApiSession);
 
                 await _dbContext.SaveChangesAsync();
 

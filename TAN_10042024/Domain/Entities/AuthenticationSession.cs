@@ -2,22 +2,12 @@
 
 namespace TAN_10042024.Domain.Entities {
     public class AuthenticationSession : ISchema {
-        public int Id { get; private set; }
-        public Guid Key { get; private set; }
+        public int Id { get; set; }
+        public Guid Key { get; set; }
         public int ClientId { get; set; }
-        public DateTime CreatedDateTime { get; private set; }
+        public DateTime CreatedDateTime { get; set; }
 
         // Navigation mapper
-        public Client Client { get; private set; }
-
-        public AuthenticationSession WithKey(Guid key) {
-            Key = key;
-            return this;
-        }
-
-        public AuthenticationSession WithClient(Client client) {
-            Client = client;
-            return this;
-        }
+        public Client Client { get; set; }
     }
 }

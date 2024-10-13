@@ -1,6 +1,6 @@
 ﻿using TAN_10042024.Application.Abstractions.Repositories;
+using TAN_10042024.Application.Builders;
 using TAN_10042024.Application.Utilities;
-using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 using File = TAN_10042024.Domain.Entities.File;
 
@@ -19,9 +19,11 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
                 _logger.LogInformation("Saving to database the file {0}"
                     .FormatWith(fileName));
 
-                var newFile = new File()
+                var newFile = FileBuilder
+                    .Initialize()
                     .WithName(fileName)
-                    .WithContent(fileContent);
+                    .WithContent(fileContent)
+                    .Build();
 
                 await _dbContext
                     .Set<File>()

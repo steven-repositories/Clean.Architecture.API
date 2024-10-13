@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.Extensions;
+using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Utilities;
-using TAN_10042024.Infrastructure.Data.Repositories;
 
 namespace TAN_10042024.Infrastructure.Middlewares {
     public class RequestLoggerMiddleware {
@@ -46,7 +46,7 @@ namespace TAN_10042024.Infrastructure.Middlewares {
 
                     var apiSessionRepo = serviceScope
                         .ServiceProvider
-                        .GetRequiredService<ApiSessionRepository>();
+                        .GetRequiredService<IApiSessionRepository>();
 
                     await apiSessionRepo.SaveApiSession(method, url);
                 }
