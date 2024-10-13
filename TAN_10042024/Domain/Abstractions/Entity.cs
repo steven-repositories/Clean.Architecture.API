@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using TAN_10042024.Domain.Abstractions;
 
-namespace TAN_10042024.Domain.Entities
-{
-    public abstract class Schema : ISchema {
+namespace TAN_10042024.Domain.Abstractions {
+    public abstract class Entity : IEntity {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; private set; }
@@ -13,7 +11,7 @@ namespace TAN_10042024.Domain.Entities
         [NotMapped]
         public bool IsNew { get; private set; }
 
-        public Schema() {
+        protected Entity() {
             CreatedDateTime = DateTime.Now;
             IsNew = Id == default;
         }
