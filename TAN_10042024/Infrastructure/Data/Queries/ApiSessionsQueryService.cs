@@ -12,9 +12,9 @@ namespace TAN_10042024.Infrastructure.Data.Queries {
             _dbContext = dbContext;
         }
 
-        public Task<List<ApiSessionsSchema>> GetAll() {
+        public Task<List<ApiSessionSchema>> GetAll() {
             return _dbContext
-                .Set<ApiSessionsSchema>()
+                .Set<ApiSessionSchema>()
                 .ToListAsync();
         }
     }

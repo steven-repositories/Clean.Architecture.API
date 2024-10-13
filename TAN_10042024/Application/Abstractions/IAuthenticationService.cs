@@ -1,8 +1,8 @@
 ﻿using TAN_10042024.Domain.Entities;
 
-namespace TAN_10042024.Application.Abstractions.Controllers {
+namespace TAN_10042024.Application.Abstractions {
     public interface IAuthenticationService {
         Task<Guid> GenerateKey(string clientName);
-        Task<AuthenticationSessionsSchema?> Authenticate(string key);
+        Task<AuthenticationSessionSchema?> Authenticate(string key);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using TAN_10042024.Application.Models;
 
-namespace TAN_10042024.Application.Abstractions.Controllers {
+namespace TAN_10042024.Application.Abstractions {
     public interface IReportService {
         Task<FileReportResponse> ReportFiles();
     }

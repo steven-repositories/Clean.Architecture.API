@@ -17,7 +17,7 @@ namespace TAN_10042024.Infrastructure.Data.Repositories
         public async Task SavePersons(List<Person> persons) {
             foreach (var person in persons) {
                 try {
-                    var newPerson = new PersonsSchema() {
+                    var newPerson = new PersonSchema() {
                         Name = person.Name,
                         Team = person.Team,
                         Score = person.Score ?? default
@@ -27,7 +27,7 @@ namespace TAN_10042024.Infrastructure.Data.Repositories
                         .FormatWith(person.Name));
 
                     await _dbContext
-                        .Set<PersonsSchema>()
+                        .Set<PersonSchema>()
                         .AddAsync(newPerson);
 
                     var personId = await _dbContext.SaveChangesAsync();

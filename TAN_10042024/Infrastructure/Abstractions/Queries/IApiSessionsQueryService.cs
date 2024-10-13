@@ -2,6 +2,6 @@
 
 namespace TAN_10042024.Application.Abstractions.Queries {
     public interface IApiSessionsQueryService {
-        Task<List<ApiSessionsSchema>> GetAll();
+        Task<List<ApiSessionSchema>> GetAll();
     }
 }

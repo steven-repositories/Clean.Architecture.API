@@ -1,8 +1,9 @@
-﻿using TAN_10042024.Application.Abstractions.Controllers;
+﻿using TAN_10042024.Application.Abstractions;
 using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Abstractions.Repositories;
 
-namespace TAN_10042024.Application.Services {
+namespace TAN_10042024.Application.Services
+{
     public class PersonService : IPersonService {
         private readonly ILogger<PersonService> _logger;
         private readonly IPersonsRepository _personsRepo;

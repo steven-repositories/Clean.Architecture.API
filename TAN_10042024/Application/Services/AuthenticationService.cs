@@ -1,11 +1,12 @@
-﻿using TAN_10042024.Application.Abstractions.Controllers;
+﻿using TAN_10042024.Application.Abstractions;
 using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Application.Services {
+namespace TAN_10042024.Application.Services
+{
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly IAuthenticationSessionsRepository _authSessionsRepo;
@@ -52,7 +53,7 @@ namespace TAN_10042024.Application.Services {
             return newKey;
         }
 
-        public async Task<AuthenticationSessionsSchema?> Authenticate(string key) {
+        public async Task<AuthenticationSessionSchema?> Authenticate(string key) {
             return await _authSessionsQueryService.GetAuthDetailsByKey(key);
         }
     }
