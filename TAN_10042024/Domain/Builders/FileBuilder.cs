@@ -1,8 +1,9 @@
 ﻿using TAN_10042024.Application.Utilities;
+using TAN_10042024.Domain.Abstractions;
 using static TAN_10042024.Application.Utilities.Exceptions;
 using File = TAN_10042024.Domain.Entities.File;
 
-namespace TAN_10042024.Application.Builders {
+namespace TAN_10042024.Domain.Builders {
     public class FileBuilder : Builder<FileBuilder, File> {
         private string? _name;
         private string? _content;

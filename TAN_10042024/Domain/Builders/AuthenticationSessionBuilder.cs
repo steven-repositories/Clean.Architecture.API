@@ -1,7 +1,8 @@
-﻿using TAN_10042024.Domain.Entities;
+﻿using TAN_10042024.Domain.Abstractions;
+using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Application.Builders {
+namespace TAN_10042024.Domain.Builders {
     public class AuthenticationSessionBuilder : Builder<AuthenticationSessionBuilder, AuthenticationSession> {
         private Guid _key;
         private Client? _client;
