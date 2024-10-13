@@ -3,6 +3,6 @@
 namespace TAN_10042024.Application.Abstractions {
     public interface IAuthenticationService {
         Task<Guid> GenerateKey(string clientName);
-        Task<AuthenticationSessionSchema?> Authenticate(string key);
+        Task<AuthenticationSession?> Authenticate(string key);
     }
 }

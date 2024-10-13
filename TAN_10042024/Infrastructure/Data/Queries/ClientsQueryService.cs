@@ -12,9 +12,9 @@ namespace TAN_10042024.Infrastructure.Data.Queries {
             _dbContext = dbContext;
         }
 
-        public Task<ClientSchema?> GetClientByName(string clientName) {
+        public Task<Client?> GetClientByName(string clientName) {
             return _dbContext
-                .Set<ClientSchema>()
+                .Set<Client>()
                 .Where(client => client.Name == clientName)
                 .FirstOrDefaultAsync();
         }

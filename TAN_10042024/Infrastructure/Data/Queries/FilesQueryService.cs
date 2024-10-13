@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TAN_10042024.Application.Abstractions.Queries;
-using TAN_10042024.Domain.Entities;
+using File = TAN_10042024.Domain.Entities.File;
 
 namespace TAN_10042024.Infrastructure.Data.Queries {
     public class FilesQueryService : IFilesQueryService {
@@ -12,9 +12,9 @@ namespace TAN_10042024.Infrastructure.Data.Queries {
             _dbContext = dbContext;
         }
 
-        public Task<List<FileSchema>> GetAll() {
+        public Task<List<File>> GetAll() {
             return _dbContext
-                .Set<FileSchema>()
+                .Set<File>()
                 .ToListAsync();
         }
     }

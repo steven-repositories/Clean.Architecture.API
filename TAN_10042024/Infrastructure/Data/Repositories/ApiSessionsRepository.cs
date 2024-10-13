@@ -17,13 +17,12 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
             _logger.LogInformation("Saving to database the api session.");
 
             try {
-                var apiSession = new ApiSessionSchema() {
-                    Method = method,
-                    URL = url
-                };
+                var apiSession = new ApiSession()
+                    .WithMethod(method)
+                    .WithURL(url);
 
                 await _dbContext
-                    .Set<ApiSessionSchema>()
+                    .Set<ApiSession>()
                     .AddAsync(apiSession);
 
                 await _dbContext.SaveChangesAsync();

@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TAN_10042024.Application.Abstractions;
 
-namespace TAN_10042024.Framework.Controllers
-{
+namespace TAN_10042024.Framework.APIs.Controllers {
     [Route("api/report")]
     [ApiController, Produces("application/json")]
     public class ReportController : ControllerBase {

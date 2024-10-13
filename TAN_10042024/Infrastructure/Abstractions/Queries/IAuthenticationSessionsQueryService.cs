@@ -2,6 +2,6 @@
 
 namespace TAN_10042024.Application.Abstractions.Queries {
     public interface IAuthenticationSessionsQueryService {
-        Task<AuthenticationSessionSchema?> GetAuthDetailsByKey(string key);
+        Task<AuthenticationSession?> GetAuthDetailsByKey(string key);
     }
 }

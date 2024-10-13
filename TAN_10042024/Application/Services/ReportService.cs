@@ -22,7 +22,7 @@ namespace TAN_10042024.Application.Services
 
             foreach (var file in filesProcessed) {
                 var fileReport = new FileReport() {
-                    FileName = file.FileName,
+                    FileName = file.Name,
                     ProcessedOn = file.CreatedDateTime.ToString("g")
                 };
 

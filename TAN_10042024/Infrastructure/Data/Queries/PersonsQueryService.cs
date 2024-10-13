@@ -12,9 +12,9 @@ namespace TAN_10042024.Infrastructure.Data.Queries {
             _dbContext = dbContext;
         }
 
-        public Task<List<PersonSchema>> GetPersonsByTeam(string team) {
+        public Task<List<Person>> GetPersonsByTeam(string team) {
             return _dbContext
-                .Set<PersonSchema>()
+                .Set<Person>()
                 .Where(person => person.Team == team)
                 .ToListAsync();
         }

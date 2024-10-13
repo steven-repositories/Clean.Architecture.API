@@ -14,7 +14,7 @@ namespace TAN_10042024.Infrastructure.Data.Queries {
             _dbContext = dbContext;
         }
 
-        public async Task<AuthenticationSessionSchema?> GetAuthDetailsByKey(string key) {
+        public async Task<AuthenticationSession?> GetAuthDetailsByKey(string key) {
             if (key.IsNullOrEmpty()) {
                 throw new RepositoryException(Constants.ERR_MESSAGE_401);
             }
@@ -22,7 +22,7 @@ namespace TAN_10042024.Infrastructure.Data.Queries {
             var guid = Guid.Parse(key);
 
             var result = _dbContext
-                .Set<AuthenticationSessionSchema>()
+                .Set<AuthenticationSession>()
                 .Where(auth => auth.Key == guid)
                 .FirstOrDefaultAsync();
 

@@ -19,17 +19,16 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
 
             try {
                 var client = _dbContext
-                    .Set<ClientSchema>()
+                    .Set<Client>()
                     .Where(client => client.Name == clientName)
                     .FirstOrDefault()!;
 
-                var authSession = new AuthenticationSessionSchema() {
-                    Key = key,
-                    Client = client
-                };
+                var authSession = new AuthenticationSession()
+                    .WithKey(key)
+                    .WithClient(client);
 
                 await _dbContext
-                    .Set<AuthenticationSessionSchema>()
+                    .Set<AuthenticationSession>()
                     .AddAsync(authSession);
 
                 var authId = await _dbContext.SaveChangesAsync();

@@ -7,7 +7,7 @@ namespace TAN_10042024.Domain.Entities
     public abstract class Schema : ISchema {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; protected set; }
+        public int Id { get; private set; }
         public DateTime CreatedDateTime { get; private set; }
 
         [NotMapped]

@@ -2,6 +2,7 @@
 using TAN_10042024.Application.Utilities;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
+using File = TAN_10042024.Domain.Entities.File;
 
 namespace TAN_10042024.Infrastructure.Data.Repositories {
     public class FilesRepository : IFilesRepository {
@@ -18,13 +19,12 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
                 _logger.LogInformation("Saving to database the file {0}"
                     .FormatWith(fileName));
 
-                var newFile = new FileSchema() {
-                    FileName = fileName,
-                    FileContent = fileContent
-                };
+                var newFile = new File()
+                    .WithName(fileName)
+                    .WithContent(fileContent);
 
                 await _dbContext
-                    .Set<FileSchema>()
+                    .Set<File>()
                     .AddAsync(newFile);
 
                 var fileId = await _dbContext.SaveChangesAsync();

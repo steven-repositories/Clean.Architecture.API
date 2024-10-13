@@ -2,6 +2,6 @@
 
 namespace TAN_10042024.Application.Abstractions.Queries {
     public interface IClientsQueryService {
-        Task<ClientSchema?> GetClientByName(string clientName);
+        Task<Client?> GetClientByName(string clientName);
     }
 }

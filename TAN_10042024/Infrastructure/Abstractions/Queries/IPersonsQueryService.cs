@@ -2,6 +2,6 @@
 
 namespace TAN_10042024.Application.Abstractions.Queries {
     public interface IPersonsQueryService {
-        Task<List<PersonSchema>> GetPersonsByTeam(string team);
+        Task<List<Person>> GetPersonsByTeam(string team);
     }
 }
