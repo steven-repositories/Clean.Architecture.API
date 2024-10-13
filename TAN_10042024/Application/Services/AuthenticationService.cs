@@ -2,11 +2,11 @@
 using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Utilities;
+using TAN_10042024.Domain.Builders;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Application.Services
-{
+namespace TAN_10042024.Application.Services {
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly IAuthenticationSessionRepository _authSessionsRepo;
@@ -49,7 +49,13 @@ namespace TAN_10042024.Application.Services
             _logger.LogInformation("New authentication key is generated: {0}"
                 .FormatWith(newKey.ToString()));
 
-            await _authSessionsRepo.SaveAuthKey(newKey, clientName);
+            var newAuthSession = AuthenticationSessionBuilder
+                .Initialize()
+                .WithKey(newKey)
+                .WithClient(client)
+                .Build();
+
+            await _authSessionsRepo.SaveAuthKey(newAuthSession, clientName);
             return newKey;
         }
 

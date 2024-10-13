@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.Extensions;
+using TAN_10042024.Application.Abstractions;
 using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Utilities;
 
@@ -44,9 +45,9 @@ namespace TAN_10042024.Infrastructure.Middlewares {
 
                     var apiSessionRepo = serviceScope
                         .ServiceProvider
-                        .GetRequiredService<IApiSessionRepository>();
+                        .GetRequiredService<IApiSessionService>();
 
-                    await apiSessionRepo.SaveApiSession(method, url);
+                    await apiSessionRepo.SaveSession(method, url);
                 }
             }
 

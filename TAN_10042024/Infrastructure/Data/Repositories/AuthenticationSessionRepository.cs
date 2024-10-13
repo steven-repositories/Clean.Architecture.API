@@ -1,11 +1,9 @@
 ﻿using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Utilities;
-using TAN_10042024.Domain.Builders;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Infrastructure.Data.Repositories
-{
+namespace TAN_10042024.Infrastructure.Data.Repositories {
     public class AuthenticationSessionRepository : IAuthenticationSessionRepository {
         private readonly ILogger<AuthenticationSessionRepository> _logger;
         private readonly AppDbContext _dbContext;
@@ -15,25 +13,14 @@ namespace TAN_10042024.Infrastructure.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task SaveAuthKey(Guid key, string clientName) {
+        public async Task SaveAuthKey(AuthenticationSession authSession, string clientName) {
             _logger.LogInformation("Saving to database the auth key generated for client {0}."
             .FormatWith(clientName));
 
             try {
-                var client = _dbContext
-                    .Set<Client>()
-                    .Where(client => client.Name == clientName)
-                    .FirstOrDefault()!;
-
-                var newAuthSession = AuthenticationSessionBuilder
-                    .Initialize()
-                    .WithKey(key)
-                    .WithClient(client)
-                    .Build();
-
                 await _dbContext
                     .Set<AuthenticationSession>()
-                    .AddAsync(newAuthSession);
+                    .AddAsync(authSession);
 
                 var authId = await _dbContext.SaveChangesAsync();
 

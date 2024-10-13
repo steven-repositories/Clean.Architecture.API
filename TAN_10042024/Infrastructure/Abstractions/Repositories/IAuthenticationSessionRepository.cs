@@ -1,5 +1,7 @@
-﻿namespace TAN_10042024.Application.Abstractions.Repositories {
+﻿using TAN_10042024.Domain.Entities;
+
+namespace TAN_10042024.Application.Abstractions.Repositories {
     public interface IAuthenticationSessionRepository {
-        Task SaveAuthKey(Guid key, string clientName);
+        Task SaveAuthKey(AuthenticationSession authSession, string clientName);
     }
 }

@@ -1,11 +1,9 @@
 ﻿using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Utilities;
-using TAN_10042024.Domain.Builders;
 using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Infrastructure.Data.Repositories
-{
+namespace TAN_10042024.Infrastructure.Data.Repositories {
     public class PersonRepository : IPersonRepository {
         private readonly ILogger<PersonRepository> _logger;
         private readonly AppDbContext _dbContext;
@@ -15,34 +13,25 @@ namespace TAN_10042024.Infrastructure.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task SavePersons(List<Person> persons) {
-            foreach (var person in persons) {
-                try {
-                    _logger.LogInformation("Adding person {0} details to the database..."
-                        .FormatWith(person.Name!));
+        public async Task SavePerson(Person person) {
+            try {
+                _logger.LogInformation("Adding person {0} details to the database..."
+                    .FormatWith(person.Name!));
 
-                    var newPerson = PersonBuilder
-                        .Initialize()
-                        .WithName(person.Name!)
-                        .WithTeam(person.Team!)
-                        .WithScore(person.Score!)
-                        .Build();
+                await _dbContext
+                    .Set<Person>()
+                    .AddAsync(person);
 
-                    await _dbContext
-                        .Set<Person>()
-                        .AddAsync(newPerson);
+                var personId = await _dbContext.SaveChangesAsync();
 
-                    var personId = await _dbContext.SaveChangesAsync();
+                _logger.LogInformation("Person {0} details is saved to the database with key of: {1}"
+                   .FormatWith(person.Name!, personId));
+            } catch (Exception e) {
+                var errorMessage = "Error encountered when saving persons: {0}"
+                    .FormatWith(e.Message);
 
-                    _logger.LogInformation("Person {0} details is saved to the database with key of: {1}"
-                       .FormatWith(newPerson.Name!, personId));
-                } catch (Exception e) {
-                    var errorMessage = "Error encountered when saving persons: {0}"
-                        .FormatWith(e.Message);
-
-                    _logger.LogError(errorMessage);
-                    throw new RepositoryException(errorMessage, e);
-                }
+                _logger.LogError(errorMessage);
+                throw new RepositoryException(errorMessage, e);
             }
         }
     }

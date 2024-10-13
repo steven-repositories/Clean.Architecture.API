@@ -2,9 +2,9 @@
 using TAN_10042024.Application.Abstractions;
 using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Models;
+using TAN_10042024.Domain.Builders;
 
-namespace TAN_10042024.Application.Services
-{
+namespace TAN_10042024.Application.Services {
     public class FileUploadService : IFileUploadService {
         private readonly ILogger<FileUploadService> _logger;
         private readonly IPersonRepository _personsRepo;
@@ -24,10 +24,26 @@ namespace TAN_10042024.Application.Services
 
             if (deserializedContent != null) {
                 var persons = deserializedContent.Persons;
-                await _personsRepo.SavePersons(persons);
+
+                foreach (var person in persons) {
+                    var newPerson = PersonBuilder
+                        .Initialize()
+                        .WithName(person.Name!)
+                        .WithTeam(person.Team!)
+                        .WithScore(person.Score!)
+                        .Build();
+
+                    await _personsRepo.SavePerson(newPerson);
+                }
             }
 
-            await _filesRepo.SaveFile(fileName, fileContent);
+            var newFile = FileBuilder
+                .Initialize()
+                .WithName(fileName)
+                .WithContent(fileContent)
+                .Build();
+
+            await _filesRepo.SaveFile(newFile);
         }
     }
 }
