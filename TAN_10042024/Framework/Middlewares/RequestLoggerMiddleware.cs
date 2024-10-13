@@ -30,9 +30,7 @@ namespace TAN_10042024.Infrastructure.Middlewares {
                 var form = request.Form;
 
                 if (form.Files.Count > 0) {
-                    var file = form
-                        .Files
-                        .FirstOrDefault();
+                    var file = form.Files[0];
 
                     var fileName = file!.FileName;
                     var fileContent = await file.ReadFileContent();
