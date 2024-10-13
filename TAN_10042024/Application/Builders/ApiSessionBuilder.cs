@@ -21,8 +21,8 @@ namespace TAN_10042024.Application.Builders {
             base.Build();
 
             return new ApiSession() {
-                Method = _method,
-                URL = _url
+                Method = _method!,
+                URL = _url!
             };
         }
 

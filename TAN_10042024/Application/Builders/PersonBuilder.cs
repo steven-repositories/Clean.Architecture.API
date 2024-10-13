@@ -27,8 +27,8 @@ namespace TAN_10042024.Application.Builders {
             base.Build();
 
             return new Person() {
-                Name = _name,
-                Team = _team,
+                Name = _name!,
+                Team = _team!,
                 Score = _score
             };
         }

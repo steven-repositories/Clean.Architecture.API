@@ -21,7 +21,7 @@ namespace TAN_10042024.Application.Builders {
 
             return new AuthenticationSession() {
                 Key = _key,
-                Client = _client
+                Client = _client!
             };
         }
 

@@ -21,8 +21,8 @@ namespace TAN_10042024.Application.Builders {
             base.Build();
 
             return new File() {
-                Name = _name,
-                Content = _content
+                Name = _name!,
+                Content = _content!
             };
         }
 
