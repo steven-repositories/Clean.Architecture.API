@@ -13,13 +13,13 @@ namespace TAN_10042024.Application.Services {
         }
 
         public async Task SaveSession(string method, string url) {
-            var apiSession = ApiSessionBuilder
+            var newApiSession = ApiSessionBuilder
                 .Initialize()
                 .WithMethod(method)
                 .WithURL(url)
                 .Build();
 
-            await _apiSessionRepo.SaveApiSession(apiSession);
+            await _apiSessionRepo.SaveApiSession(newApiSession);
         }
     }
 }
