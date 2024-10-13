@@ -7,17 +7,17 @@ namespace TAN_10042024.Application.Services
 {
     public class ReportService : IReportService {
         private readonly ILogger<ReportService> _logger;
-        private readonly IFileRepository _filesRepo;
-        private readonly IFileQueryService _filesQueryService;
+        private readonly IFileRepository _fileRepo;
+        private readonly IFileQueryService _fileQueryService;
 
-        public ReportService(ILogger<ReportService> logger, IFileRepository filesRepo, IFileQueryService filesQueryService) {
+        public ReportService(ILogger<ReportService> logger, IFileRepository fileRepo, IFileQueryService fileQueryService) {
             _logger = logger;
-            _filesRepo = filesRepo;
-            _filesQueryService = filesQueryService;
+            _fileRepo = fileRepo;
+            _fileQueryService = fileQueryService;
         }
 
         public async Task<FileReportResponse> ReportFiles() {
-            var filesProcessed = await _filesQueryService.GetAll();
+            var filesProcessed = await _fileQueryService.GetAll();
             var fileReportList = new List<FileReport>();
 
             foreach (var file in filesProcessed) {

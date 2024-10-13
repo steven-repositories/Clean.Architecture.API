@@ -7,13 +7,13 @@ using TAN_10042024.Domain.Builders;
 namespace TAN_10042024.Application.Services {
     public class FileUploadService : IFileUploadService {
         private readonly ILogger<FileUploadService> _logger;
-        private readonly IPersonRepository _personsRepo;
-        private readonly IFileRepository _filesRepo;
+        private readonly IPersonRepository _personRepo;
+        private readonly IFileRepository _fileRepo;
 
-        public FileUploadService(ILogger<FileUploadService> logger, IPersonRepository personsRepo, IFileRepository filesRepo) {
+        public FileUploadService(ILogger<FileUploadService> logger, IPersonRepository personRepo, IFileRepository fileRepo) {
             _logger = logger;
-            _personsRepo = personsRepo;
-            _filesRepo = filesRepo;
+            _personRepo = personRepo;
+            _fileRepo = fileRepo;
         }
 
         public async Task Upload(string fileName, string fileContent) {
@@ -33,7 +33,7 @@ namespace TAN_10042024.Application.Services {
                         .WithScore(person.Score!)
                         .Build();
 
-                    await _personsRepo.SavePerson(newPerson);
+                    await _personRepo.SavePerson(newPerson);
                 }
             }
 
@@ -43,7 +43,7 @@ namespace TAN_10042024.Application.Services {
                 .WithContent(fileContent)
                 .Build();
 
-            await _filesRepo.SaveFile(newFile);
+            await _fileRepo.SaveFile(newFile);
         }
     }
 }

@@ -5,23 +5,23 @@ using TAN_10042024.Application.Abstractions.Repositories;
 namespace TAN_10042024.Application.Services {
     public class PersonService : IPersonService {
         private readonly ILogger<PersonService> _logger;
-        private readonly IPersonRepository _personsRepo;
-        private readonly IPersonQueryService _personsQueryService;
+        private readonly IPersonRepository _personRepo;
+        private readonly IPersonQueryService _personQueryService;
 
-        public PersonService(ILogger<PersonService> logger, IPersonRepository personsRepo, IPersonQueryService personsQueryService) {
+        public PersonService(ILogger<PersonService> logger, IPersonRepository personRepo, IPersonQueryService personQueryService) {
             _logger = logger;
-            _personsRepo = personsRepo;
-            _personsQueryService = personsQueryService;
+            _personRepo = personRepo;
+            _personQueryService = personQueryService;
         }
 
         public async Task<int?> GetMaxScoreByTeam(string team) {
-            var persons = await _personsQueryService.GetPersonsByTeam(team);
+            var persons = await _personQueryService.GetPersonsByTeam(team);
 
             return persons.Max(person => person.Score);
         }
 
         public async Task<int?> GetSecondToLeastScoreByTeam(string team) {
-            var persons = await _personsQueryService.GetPersonsByTeam(team);
+            var persons = await _personQueryService.GetPersonsByTeam(team);
 
             var secondToLeastScore = persons
                 .OrderBy(person => person.Score)
@@ -33,7 +33,7 @@ namespace TAN_10042024.Application.Services {
         }
 
         public async Task<string> UnionizePersonNamesByTeam(string team) {
-            var persons = await _personsQueryService.GetPersonsByTeam(team);
+            var persons = await _personQueryService.GetPersonsByTeam(team);
             var personNames = persons
                 .Select(person => person.Name)
                 .ToList();

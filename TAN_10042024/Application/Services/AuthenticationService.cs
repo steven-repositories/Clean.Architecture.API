@@ -9,20 +9,20 @@ using static TAN_10042024.Application.Utilities.Exceptions;
 namespace TAN_10042024.Application.Services {
     public class AuthenticationService : IAuthenticationService {
         private readonly ILogger<AuthenticationService> _logger;
-        private readonly IAuthenticationSessionRepository _authSessionsRepo;
-        private readonly IAuthenticationSessionQueryService _authSessionsQueryService;
-        private readonly IClientQueryService _clientsQueryService;
+        private readonly IAuthenticationSessionRepository _authSessionRepo;
+        private readonly IAuthenticationSessionQueryService _authSessionQueryService;
+        private readonly IClientQueryService _clientQueryService;
 
-        public AuthenticationService(ILogger<AuthenticationService> logger, IAuthenticationSessionRepository authSessionsRepo,
-            IAuthenticationSessionQueryService authSessionsQueryService, IClientQueryService clientsQueryService) {
+        public AuthenticationService(ILogger<AuthenticationService> logger, IAuthenticationSessionRepository authSessionRepo,
+            IAuthenticationSessionQueryService authSessionQueryService, IClientQueryService clientQueryService) {
             _logger = logger;
-            _authSessionsRepo = authSessionsRepo;
-            _authSessionsQueryService = authSessionsQueryService;
-            _clientsQueryService = clientsQueryService;
+            _authSessionRepo = authSessionRepo;
+            _authSessionQueryService = authSessionQueryService;
+            _clientQueryService = clientQueryService;
         }
 
         public async Task<Guid> GenerateKey(string clientName) {
-            var client = await _clientsQueryService.GetClientByName(clientName);
+            var client = await _clientQueryService.GetClientByName(clientName);
 
             if (client == null) {
                 throw new ServiceException("Client cannot be found.");
@@ -35,7 +35,7 @@ namespace TAN_10042024.Application.Services {
             var isNew = default(bool);
 
             do {
-                var authSession = await _authSessionsQueryService
+                var authSession = await _authSessionQueryService
                     .GetAuthDetailsByKey(newKey.ToString());
 
                 if (authSession != null) {
@@ -55,12 +55,12 @@ namespace TAN_10042024.Application.Services {
                 .WithClient(client)
                 .Build();
 
-            await _authSessionsRepo.SaveAuthKey(newAuthSession, clientName);
+            await _authSessionRepo.SaveAuthKey(newAuthSession, clientName);
             return newKey;
         }
 
         public async Task<AuthenticationSession?> Authenticate(string key) {
-            return await _authSessionsQueryService.GetAuthDetailsByKey(key);
+            return await _authSessionQueryService.GetAuthDetailsByKey(key);
         }
     }
 }
