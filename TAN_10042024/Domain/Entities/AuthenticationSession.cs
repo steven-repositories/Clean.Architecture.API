@@ -4,8 +4,11 @@ namespace TAN_10042024.Domain.Entities {
     public class AuthenticationSession : ISchema {
         public int Id { get; private set; }
         public Guid Key { get; private set; }
-        public Client Client { get; private set; }
+        public int ClientId { get; set; }
         public DateTime CreatedDateTime { get; private set; }
+
+        // Navigation mapper
+        public Client Client { get; private set; }
 
         public AuthenticationSession WithKey(Guid key) {
             Key = key;

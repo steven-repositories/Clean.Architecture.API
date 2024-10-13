@@ -23,6 +23,11 @@ namespace TAN_10042024.Infrastructure.Data {
                 schema
                     .HasIndex(auth => auth.Key)
                     .IsUnique();
+
+                schema
+                    .HasOne(auth => auth.Client)
+                    .WithMany(client => client.AuthenticationSessions)
+                    .HasForeignKey(auth => auth.ClientId);
             });
 
             modelBuilder.Entity<Client>()
