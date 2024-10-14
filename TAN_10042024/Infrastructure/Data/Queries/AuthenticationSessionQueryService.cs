@@ -21,12 +21,12 @@ namespace TAN_10042024.Infrastructure.Data.Queries {
 
             var guid = Guid.Parse(key);
 
-            var result = _dbContext
+            var result = await _dbContext
                 .Set<AuthenticationSession>()
                 .Where(auth => auth.Key == guid)
                 .FirstOrDefaultAsync();
 
-            return await result;
+            return result;
         }
     }
 }
