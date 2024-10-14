@@ -13,9 +13,9 @@ namespace TAN_10042024.Infrastructure.Data.Repositories {
             _dbContext = dbContext;
         }
 
-        public async Task SaveAuthKey(AuthenticationSession authSession, string clientName) {
+        public async Task SaveAuthKey(AuthenticationSession authSession) {
             _logger.LogInformation("Saving to database the auth key generated for client {0}."
-            .FormatWith(clientName));
+            .FormatWith(authSession.Client.Name));
 
             try {
                 await _dbContext

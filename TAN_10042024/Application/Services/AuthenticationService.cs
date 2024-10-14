@@ -55,7 +55,7 @@ namespace TAN_10042024.Application.Services {
                 .WithClient(client)
                 .Build();
 
-            await _authSessionRepo.SaveAuthKey(newAuthSession, clientName);
+            await _authSessionRepo.SaveAuthKey(newAuthSession);
             return newKey;
         }
 
