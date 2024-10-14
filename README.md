@@ -59,6 +59,8 @@ In the codebase, go to the appsettings.json and change the value of "DatabaseNam
 
 You need to change the "Server" as well in "CC" connection string based on what is your IPv4 Address. Open your command prompt and execute "ipconfig" command to see what is your IP Address.
 
+Once everything is set, Open your Package Manager Console and run the command `Update-Database`. This will run the migration files inside the Framework Layer > Migrations and create the tables needed for this application.
+
 
 ## Building the Docker Image
 
