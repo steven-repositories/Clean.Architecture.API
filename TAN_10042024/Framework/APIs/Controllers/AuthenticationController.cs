@@ -6,9 +6,9 @@ namespace TAN_10042024.Framework.APIs.Controllers {
     [Route("api/auth")]
     [ApiController, Produces("application/json")]
     public class AuthenticationController : ControllerBase {
-        private readonly IAuthenticationService _authService;
+        private readonly IAuthentication _authService;
 
-        public AuthenticationController(IAuthenticationService authService) {
+        public AuthenticationController(IAuthentication authService) {
             _authService = authService;
         }
 

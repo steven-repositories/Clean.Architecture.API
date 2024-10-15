@@ -5,7 +5,7 @@ using TAN_10042024.Application.Models;
 using TAN_10042024.Domain.Builders;
 
 namespace TAN_10042024.Application.Services {
-    public class FileUploadService : IFileUploadService {
+    public class FileUploadService : IFileUpload {
         private readonly ILogger<FileUploadService> _logger;
         private readonly IPersonRepository _personRepo;
         private readonly IFileRepository _fileRepo;

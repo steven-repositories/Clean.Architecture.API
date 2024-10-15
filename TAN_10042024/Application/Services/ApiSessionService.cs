@@ -3,7 +3,7 @@ using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Domain.Builders;
 
 namespace TAN_10042024.Application.Services {
-    public class ApiSessionService : IApiSessionService {
+    public class ApiSessionService : IApiSession {
         private readonly ILogger<ApiSessionService> _logger;
         private readonly IApiSessionRepository _apiSessionRepo;
 

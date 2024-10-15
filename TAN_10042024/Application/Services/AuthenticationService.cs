@@ -7,7 +7,7 @@ using TAN_10042024.Domain.Entities;
 using static TAN_10042024.Application.Utilities.Exceptions;
 
 namespace TAN_10042024.Application.Services {
-    public class AuthenticationService : IAuthenticationService {
+    public class AuthenticationService : IAuthentication {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly IAuthenticationSessionRepository _authSessionRepo;
         private readonly IAuthenticationSessionQueryService _authSessionQueryService;

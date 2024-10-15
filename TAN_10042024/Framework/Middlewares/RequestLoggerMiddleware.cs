@@ -45,7 +45,7 @@ namespace TAN_10042024.Infrastructure.Middlewares {
 
                     var apiSessionRepo = serviceScope
                         .ServiceProvider
-                        .GetRequiredService<IApiSessionService>();
+                        .GetRequiredService<IApiSession>();
 
                     await apiSessionRepo.SaveSession(method, url);
                 }

@@ -5,9 +5,9 @@ namespace TAN_10042024.Framework.APIs.Controllers {
     [Route("api/person")]
     [ApiController, Produces("application/json")]
     public class PersonController : ControllerBase {
-        private readonly IPersonService _personService;
+        private readonly IPerson _personService;
 
-        public PersonController(IPersonService personService) {
+        public PersonController(IPerson personService) {
             _personService = personService;
         }
 

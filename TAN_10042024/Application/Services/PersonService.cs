@@ -3,7 +3,7 @@ using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Abstractions.Repositories;
 
 namespace TAN_10042024.Application.Services {
-    public class PersonService : IPersonService {
+    public class PersonService : IPerson {
         private readonly ILogger<PersonService> _logger;
         private readonly IPersonRepository _personRepo;
         private readonly IPersonQueryService _personQueryService;

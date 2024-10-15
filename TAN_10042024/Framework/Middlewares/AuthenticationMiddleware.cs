@@ -43,7 +43,7 @@ namespace TAN_10042024.Infrastructure.Middlewares
 
                 var authService = serviceScope
                     .ServiceProvider
-                    .GetRequiredService<IAuthenticationService>();
+                    .GetRequiredService<IAuthentication>();
 
                 var details = await authService.Authenticate(key!);
 

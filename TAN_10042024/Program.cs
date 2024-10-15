@@ -29,11 +29,11 @@ builder.Services.AddScoped<IClientQueryService, ClientQueryService>();
 
 // Application Services
 builder.Services.AddSingleton<IMigration, MigrationService>();
-builder.Services.AddScoped<IApiSessionService, ApiSessionService>();
-builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
-builder.Services.AddScoped<IFileUploadService, FileUploadService>();
-builder.Services.AddScoped<IReportService, ReportService>();
-builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IApiSession, ApiSessionService>();
+builder.Services.AddScoped<IAuthentication, AuthenticationService>();
+builder.Services.AddScoped<IFileUpload, FileUploadService>();
+builder.Services.AddScoped<IReport, ReportService>();
+builder.Services.AddScoped<IPerson, PersonService>();
 
 builder.Services.AddControllers();
 

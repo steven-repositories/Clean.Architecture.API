@@ -7,9 +7,9 @@ namespace TAN_10042024.Framework.APIs.Controllers {
     [Route("api/file")]
     [ApiController, Produces("application/json")]
     public class FileUploadController : ControllerBase {
-        private readonly IFileUploadService _fileUploadService;
+        private readonly IFileUpload _fileUploadService;
 
-        public FileUploadController(IFileUploadService fileUploadService) {
+        public FileUploadController(IFileUpload fileUploadService) {
             _fileUploadService = fileUploadService;
         }
 

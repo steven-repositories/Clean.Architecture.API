@@ -5,7 +5,7 @@ using TAN_10042024.Application.Models;
 
 namespace TAN_10042024.Application.Services
 {
-    public class ReportService : IReportService {
+    public class ReportService : IReport {
         private readonly ILogger<ReportService> _logger;
         private readonly IFileRepository _fileRepo;
         private readonly IFileQueryService _fileQueryService;

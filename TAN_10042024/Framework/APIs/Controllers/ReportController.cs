@@ -5,9 +5,9 @@ namespace TAN_10042024.Framework.APIs.Controllers {
     [Route("api/report")]
     [ApiController, Produces("application/json")]
     public class ReportController : ControllerBase {
-        private readonly IReportService _reportService;
+        private readonly IReport _reportService;
 
-        public ReportController(IReportService reportService) {
+        public ReportController(IReport reportService) {
             _reportService = reportService;
         }
 
