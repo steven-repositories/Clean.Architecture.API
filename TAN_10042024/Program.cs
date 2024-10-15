@@ -28,7 +28,6 @@ builder.Services.AddScoped<IFileQueryService, FileQueryService>();
 builder.Services.AddScoped<IClientQueryService, ClientQueryService>();
 
 // Application Services
-builder.Services.AddSingleton<IMigration, MigrationService>();
 builder.Services.AddScoped<IApiSession, ApiSessionService>();
 builder.Services.AddScoped<IAuthentication, AuthenticationService>();
 builder.Services.AddScoped<IFileUpload, FileUploadService>();
