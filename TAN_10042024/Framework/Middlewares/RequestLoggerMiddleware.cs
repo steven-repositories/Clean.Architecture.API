@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.Extensions;
 using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Utilities;
 
 namespace TAN_10042024.Infrastructure.Middlewares {
@@ -8,7 +7,7 @@ namespace TAN_10042024.Infrastructure.Middlewares {
         private readonly ILogger<RequestLoggerMiddleware> _logger;
         private readonly RequestDelegate _next;
         private readonly IServiceProvider _serviceProvider;
-
+        
         public RequestLoggerMiddleware(ILogger<RequestLoggerMiddleware> logger, RequestDelegate next, IServiceProvider serviceProvider) {
             _logger = logger;
             _next = next;
@@ -43,11 +42,11 @@ namespace TAN_10042024.Infrastructure.Middlewares {
 
                     using var serviceScope = _serviceProvider.CreateScope();
 
-                    var apiSessionRepo = serviceScope
+                    var apiSession = serviceScope
                         .ServiceProvider
                         .GetRequiredService<IApiSession>();
 
-                    await apiSessionRepo.SaveSession(method, url);
+                    await apiSession.SaveSession(method, url);
                 }
             }
 
