@@ -1,4 +1,6 @@
-﻿namespace TAN_10042024.Application.Utilities {
+﻿using TAN_10042024.Application.Services;
+
+namespace TAN_10042024.Application.Utilities {
     public static class Extensions {
         public static bool IsNullOrEmpty(this object value) {
             return string.IsNullOrEmpty(value.ToString());
@@ -14,6 +16,11 @@
 
             var reader = new StreamReader(stream);
             return await reader.ReadToEndAsync();
+        }
+
+        public static void ExecuteMigrations(this IHost host) {
+            new MigrationService()
+                .ExecuteMigrations(host);
         }
     }
 }

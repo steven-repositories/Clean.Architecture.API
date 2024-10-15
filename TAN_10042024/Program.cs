@@ -3,6 +3,7 @@ using TAN_10042024.Application.Abstractions;
 using TAN_10042024.Application.Abstractions.Queries;
 using TAN_10042024.Application.Abstractions.Repositories;
 using TAN_10042024.Application.Services;
+using TAN_10042024.Application.Utilities;
 using TAN_10042024.Infrastructure.Data;
 using TAN_10042024.Infrastructure.Data.Queries;
 using TAN_10042024.Infrastructure.Data.Repositories;
@@ -27,6 +28,7 @@ builder.Services.AddScoped<IFileQueryService, FileQueryService>();
 builder.Services.AddScoped<IClientQueryService, ClientQueryService>();
 
 // Application Services
+builder.Services.AddSingleton<IMigration, MigrationService>();
 builder.Services.AddScoped<IApiSessionService, ApiSessionService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IFileUploadService, FileUploadService>();
@@ -41,16 +43,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-using var serviceScope = app
-    .Services
-    .CreateScope();
-
-var dbContext = serviceScope
-    .ServiceProvider
-    .GetRequiredService<AppDbContext>()
-    .Database;
-
-dbContext.Migrate();
+app.ExecuteMigrations();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {

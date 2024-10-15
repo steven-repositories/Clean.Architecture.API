@@ -36,5 +36,14 @@
             /// <param name="innerException">Inner Exception</param>
             public BuilderException(string message = null, Exception innerException = null) : base(message, innerException) { }
         }
+
+        /// <summary>
+        /// Migration error occured against the executing the migration files.
+        /// </summary>
+        public class MigrationException : Exception {
+            /// <param name="message">Exception message</param>
+            /// <param name="innerException">Inner Exception</param>
+            public MigrationException(string message = null, Exception innerException = null) : base(message, innerException) { }
+        }
     }
 }
