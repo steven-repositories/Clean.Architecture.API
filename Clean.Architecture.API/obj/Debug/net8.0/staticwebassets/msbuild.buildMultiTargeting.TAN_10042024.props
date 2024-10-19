@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TAN_10042024.props" />
+</Project>
