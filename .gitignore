@@ -2,6 +2,7 @@
 /Clean.Architecture.API/bin
 /Clean.Architecture.API/obj
 /Clean.Architecture.API/*.user
-/Clean.Architecture.API.Tests/*
+/Clean.Architecture.API.Tests/bin
+/Clean.Architecture.API.Tests/obj
 
 publish/
