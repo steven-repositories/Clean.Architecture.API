@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TAN_10042024.Domain.Entities;
-using File = TAN_10042024.Domain.Entities.File;
+using Clean.Architecture.API.Domain.Entities;
+using File = Clean.Architecture.API.Domain.Entities.File;
 
-namespace TAN_10042024.Infrastructure.Data {
+namespace Clean.Architecture.API.Infrastructure.Data {
     public class AppDbContext : DbContext {
         public DbSet<AuthenticationSession> AuthenticationSessions { get; set; }
         public DbSet<Client> Clients { get; set; }

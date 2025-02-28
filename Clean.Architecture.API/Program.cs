@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Abstractions.Queries;
-using TAN_10042024.Application.Abstractions.Repositories;
-using TAN_10042024.Application.Services;
-using TAN_10042024.Application.Utilities;
-using TAN_10042024.Infrastructure.Data;
-using TAN_10042024.Infrastructure.Data.Queries;
-using TAN_10042024.Infrastructure.Data.Repositories;
-using TAN_10042024.Infrastructure.Middlewares;
+using Clean.Architecture.API.Application.Abstractions;
+using Clean.Architecture.API.Application.Abstractions.Queries;
+using Clean.Architecture.API.Application.Abstractions.Repositories;
+using Clean.Architecture.API.Application.Services;
+using Clean.Architecture.API.Application.Utilities;
+using Clean.Architecture.API.Infrastructure.Data;
+using Clean.Architecture.API.Infrastructure.Data.Queries;
+using Clean.Architecture.API.Infrastructure.Data.Repositories;
+using Clean.Architecture.API.Infrastructure.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 

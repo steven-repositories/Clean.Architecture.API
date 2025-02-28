@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TAN_10042024.Infrastructure.Data;
+using Clean.Architecture.API.Infrastructure.Data;
 
 #nullable disable
 
-namespace TAN_10042024.Migrations
+namespace Clean.Architecture.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20241003195020_Initial Migration")]
@@ -25,7 +25,7 @@ namespace TAN_10042024.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthorizationTokens", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.AuthorizationTokens", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

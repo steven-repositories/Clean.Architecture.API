@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Utilities;
-using TAN_10042024.Infrastructure.Data;
-using static TAN_10042024.Application.Utilities.Exceptions;
+using Clean.Architecture.API.Application.Abstractions;
+using Clean.Architecture.API.Application.Utilities;
+using Clean.Architecture.API.Infrastructure.Data;
+using static Clean.Architecture.API.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Application.Services {
+namespace Clean.Architecture.API.Application.Services {
     public class MigrationService : IMigration {
         public void ExecuteMigrations(IHost host) {
             try {

@@ -1,4 +1,4 @@
-﻿namespace TAN_10042024.Domain.Abstractions {
+﻿namespace Clean.Architecture.API.Domain.Abstractions {
     public abstract class Builder<T, TResult> where T : new() {
         public static T Initialize() {
             return new T();

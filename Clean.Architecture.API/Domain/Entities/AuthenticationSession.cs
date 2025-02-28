@@ -1,6 +1,6 @@
-﻿using TAN_10042024.Domain.Abstractions;
+﻿using Clean.Architecture.API.Domain.Abstractions;
 
-namespace TAN_10042024.Domain.Entities {
+namespace Clean.Architecture.API.Domain.Entities {
     public class AuthenticationSession : Entity {
         public required Guid Key { get; set; }
         public int ClientId { get; set; }

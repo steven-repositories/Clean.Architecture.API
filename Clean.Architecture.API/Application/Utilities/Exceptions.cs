@@ -1,4 +1,4 @@
-﻿namespace TAN_10042024.Application.Utilities {
+﻿namespace Clean.Architecture.API.Application.Utilities {
     public class Exceptions {
         /// <summary>
         /// General error occured.

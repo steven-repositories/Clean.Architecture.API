@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Models;
+using Clean.Architecture.API.Application.Abstractions;
+using Clean.Architecture.API.Application.Models;
 
-namespace TAN_10042024.Framework.APIs.Controllers {
+namespace Clean.Architecture.API.Framework.APIs.Controllers {
     [Route("api/auth")]
     [ApiController, Produces("application/json")]
     public class AuthenticationController : ControllerBase {

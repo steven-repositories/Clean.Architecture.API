@@ -1,6 +1,6 @@
-﻿using File = TAN_10042024.Domain.Entities.File;
+﻿using File = Clean.Architecture.API.Domain.Entities.File;
 
-namespace TAN_10042024.Application.Abstractions.Repositories {
+namespace Clean.Architecture.API.Application.Abstractions.Repositories {
     public interface IFileRepository {
         Task SaveFile(File file);
     }

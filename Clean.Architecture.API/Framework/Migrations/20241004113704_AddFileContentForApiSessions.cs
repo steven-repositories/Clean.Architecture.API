@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace TAN_10042024.Migrations
+namespace Clean.Architecture.API.Migrations
 {
     /// <inheritdoc />
     public partial class AddFileContentForApiSessions : Migration

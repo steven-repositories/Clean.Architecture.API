@@ -1,8 +1,8 @@
-﻿using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Models;
-using TAN_10042024.Application.Utilities;
+﻿using Clean.Architecture.API.Application.Abstractions;
+using Clean.Architecture.API.Application.Models;
+using Clean.Architecture.API.Application.Utilities;
 
-namespace TAN_10042024.Infrastructure.Middlewares
+namespace Clean.Architecture.API.Infrastructure.Middlewares
 {
     public class AuthenticationMiddleware {
         private readonly RequestDelegate _next;

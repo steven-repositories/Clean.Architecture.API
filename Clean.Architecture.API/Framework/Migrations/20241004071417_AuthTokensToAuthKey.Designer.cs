@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TAN_10042024.Infrastructure.Data;
+using Clean.Architecture.API.Infrastructure.Data;
 
 #nullable disable
 
-namespace TAN_10042024.Migrations
+namespace Clean.Architecture.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20241004071417_AuthTokensToAuthKey")]
@@ -25,7 +25,7 @@ namespace TAN_10042024.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthenticationSessions", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.AuthenticationSessions", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,7 @@ namespace TAN_10042024.Migrations
                     b.ToTable("AuthenticationSessions");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.Clients", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.Clients", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,9 +72,9 @@ namespace TAN_10042024.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthenticationSessions", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.AuthenticationSessions", b =>
                 {
-                    b.HasOne("TAN_10042024.Domain.Entities.Clients", "Clients")
+                    b.HasOne("Clean.Architecture.API.Domain.Entities.Clients", "Clients")
                         .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)

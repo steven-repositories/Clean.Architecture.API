@@ -1,6 +1,6 @@
-﻿using TAN_10042024.Domain.Entities;
+﻿using Clean.Architecture.API.Domain.Entities;
 
-namespace TAN_10042024.Application.Abstractions.Repositories {
+namespace Clean.Architecture.API.Application.Abstractions.Repositories {
     public interface IApiSessionRepository {
         Task SaveApiSession(ApiSession session);
     }

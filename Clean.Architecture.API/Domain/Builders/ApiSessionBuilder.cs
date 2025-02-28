@@ -1,9 +1,9 @@
-﻿using TAN_10042024.Application.Utilities;
-using TAN_10042024.Domain.Abstractions;
-using TAN_10042024.Domain.Entities;
-using static TAN_10042024.Application.Utilities.Exceptions;
+﻿using Clean.Architecture.API.Application.Utilities;
+using Clean.Architecture.API.Domain.Abstractions;
+using Clean.Architecture.API.Domain.Entities;
+using static Clean.Architecture.API.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Domain.Builders {
+namespace Clean.Architecture.API.Domain.Builders {
     public class ApiSessionBuilder : Builder<ApiSessionBuilder, ApiSession> {
         private string? _method;
         private string? _url;

@@ -1,9 +1,9 @@
-﻿using TAN_10042024.Application.Utilities;
-using TAN_10042024.Domain.Abstractions;
-using static TAN_10042024.Application.Utilities.Exceptions;
-using File = TAN_10042024.Domain.Entities.File;
+﻿using Clean.Architecture.API.Application.Utilities;
+using Clean.Architecture.API.Domain.Abstractions;
+using static Clean.Architecture.API.Application.Utilities.Exceptions;
+using File = Clean.Architecture.API.Domain.Entities.File;
 
-namespace TAN_10042024.Domain.Builders {
+namespace Clean.Architecture.API.Domain.Builders {
     public class FileBuilder : Builder<FileBuilder, File> {
         private string? _name;
         private string? _content;
