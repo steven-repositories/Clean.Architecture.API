@@ -70,12 +70,10 @@ To build an image, you need to execute the "docker build" command with option of
 	docker build -t {image_name}:{tag} -f {Dockerfile path} --progress=plain .
 
 
-And since in this repository, the Dockerfile is located inside the "TAN_10042024" project file.
-
 So when you are going to build your Docker Image with this application, the command you need to execute should be like this:
 
 
-	docker build -t tan_10042024:1.0 -f ./TAN_10042024/Dockerfile --progress=plain .
+	docker build -t clean_architecture_api:1.0 -f ./Dockerfile --progress=plain .
 
 
 

@@ -1,4 +1,5 @@
 /.vs/
+/TAN_10042024/*
 /Clean.Architecture.API/bin
 /Clean.Architecture.API/obj
 /Clean.Architecture.API/*.user
