@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Utilities;
-using static TAN_10042024.Application.Utilities.Exceptions;
+using Clean.Architecture.API.Application.Abstractions;
+using Clean.Architecture.API.Application.Utilities;
+using static Clean.Architecture.API.Application.Utilities.Exceptions;
 
-namespace TAN_10042024.Framework.APIs.Controllers {
+namespace Clean.Architecture.API.Framework.APIs.Controllers {
     [Route("api/file")]
     [ApiController, Produces("application/json")]
     public class FileUploadController : ControllerBase {

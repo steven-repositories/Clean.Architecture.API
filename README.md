@@ -43,8 +43,8 @@ Before you begin, ensure you have the following installed:
 Let's get start by cloning the repository.
 
 
-	git clone https://github.com/steven-repositories/TAN_10042024.git
-	cd TAN_10042024
+	git clone https://github.com/steven-repositories/Clean.Architecture.API.git
+	cd Clean.Architecture.API
 
 
 After cloning the repository, open your SSMS and login into you local server. Usually named as: "localhost".
@@ -90,7 +90,7 @@ You can set your desired host port and the container port when you execute the "
 Based on what is in the Dockerfile, the application will be exposed to port 8080. So the command you need to execute to run the application in Docker should be like this:
 
 
-	docker run -p 8080:8080 tan_10042024:1.0
+	docker run -p 8080:8080 Clean.Architecture.API:1.0
 
 
 
@@ -103,7 +103,7 @@ The endpoints that this application have are:
 	
 2. api/file/upload/persons
 	- Uses to securely upload a JSON file with "persons" in it.
-	- You can download [this](./TAN_10042024/Libraries/Assets/Persons.json) sample JSON file that can be use for file uploading. 
+	- You can download [this](./Clean.Architecture.API/Libraries/Assets/Persons.json) sample JSON file that can be use for file uploading. 
 	
 3. api/person/{team}/max-score
 	- Uses to get the highest score that a single team have in the database.

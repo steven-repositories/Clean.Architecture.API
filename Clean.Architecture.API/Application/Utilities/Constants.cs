@@ -1,4 +1,4 @@
-﻿namespace TAN_10042024.Application.Utilities {
+﻿namespace Clean.Architecture.API.Application.Utilities {
     public class Constants {
         public const string AUTH_HEADER_KEY = "Auth-Key";
 

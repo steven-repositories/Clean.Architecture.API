@@ -1,6 +1,6 @@
-﻿using TAN_10042024.Domain.Abstractions;
+﻿using Clean.Architecture.API.Domain.Abstractions;
 
-namespace TAN_10042024.Domain.Entities {
+namespace Clean.Architecture.API.Domain.Entities {
     public class Person : Entity {
         public required string Name { get; set; }
         public required string Team { get; set; }

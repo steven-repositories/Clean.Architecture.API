@@ -1,4 +1,4 @@
-﻿namespace TAN_10042024.Application.Models {
+﻿namespace Clean.Architecture.API.Application.Models {
     public class FileReportResponse {
         public required int Count { get; set; }
         public required List<FileReport> Files { get; set; }

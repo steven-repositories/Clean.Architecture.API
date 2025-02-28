@@ -1,8 +1,8 @@
-﻿using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Abstractions.Repositories;
-using TAN_10042024.Domain.Builders;
+﻿using Clean.Architecture.API.Application.Abstractions;
+using Clean.Architecture.API.Application.Abstractions.Repositories;
+using Clean.Architecture.API.Domain.Builders;
 
-namespace TAN_10042024.Application.Services {
+namespace Clean.Architecture.API.Application.Services {
     public class ApiSessionService : IApiSession {
         private readonly ILogger<ApiSessionService> _logger;
         private readonly IApiSessionRepository _apiSessionRepo;

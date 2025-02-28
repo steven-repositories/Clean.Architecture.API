@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TAN_10042024.Infrastructure.Data;
+using Clean.Architecture.API.Infrastructure.Data;
 
 #nullable disable
 
-namespace TAN_10042024.Migrations
+namespace Clean.Architecture.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20241013174455_Added Foreign Relation For AuthenticationSession and Client")]
@@ -25,7 +25,7 @@ namespace TAN_10042024.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.ApiSession", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.ApiSession", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace TAN_10042024.Migrations
                     b.ToTable("ApiSessions");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthenticationSession", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.AuthenticationSession", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,7 +76,7 @@ namespace TAN_10042024.Migrations
                     b.ToTable("AuthenticationSessions");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.Client", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,7 +96,7 @@ namespace TAN_10042024.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.File", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.File", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +120,7 @@ namespace TAN_10042024.Migrations
                     b.ToTable("Files");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.Person", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,9 +147,9 @@ namespace TAN_10042024.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.AuthenticationSession", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.AuthenticationSession", b =>
                 {
-                    b.HasOne("TAN_10042024.Domain.Entities.Client", "Client")
+                    b.HasOne("Clean.Architecture.API.Domain.Entities.Client", "Client")
                         .WithMany("AuthenticationSessions")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -158,7 +158,7 @@ namespace TAN_10042024.Migrations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("TAN_10042024.Domain.Entities.Client", b =>
+            modelBuilder.Entity("Clean.Architecture.API.Domain.Entities.Client", b =>
                 {
                     b.Navigation("AuthenticationSessions");
                 });

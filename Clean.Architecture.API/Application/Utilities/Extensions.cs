@@ -1,6 +1,6 @@
-﻿using TAN_10042024.Application.Services;
+﻿using Clean.Architecture.API.Application.Services;
 
-namespace TAN_10042024.Application.Utilities {
+namespace Clean.Architecture.API.Application.Utilities {
     public static class Extensions {
         public static bool IsNullOrEmpty(this object value) {
             return string.IsNullOrEmpty(value.ToString());

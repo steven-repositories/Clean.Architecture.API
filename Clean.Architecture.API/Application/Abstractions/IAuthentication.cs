@@ -1,6 +1,6 @@
-﻿using TAN_10042024.Domain.Entities;
+﻿using Clean.Architecture.API.Domain.Entities;
 
-namespace TAN_10042024.Application.Abstractions {
+namespace Clean.Architecture.API.Application.Abstractions {
     public interface IAuthentication {
         Task<Guid> GenerateKey(string clientName);
         Task<AuthenticationSession?> Authenticate(string key);

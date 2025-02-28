@@ -1,6 +1,6 @@
-﻿using TAN_10042024.Application.Models;
+﻿using Clean.Architecture.API.Application.Models;
 
-namespace TAN_10042024.Infrastructure.Middlewares {
+namespace Clean.Architecture.API.Infrastructure.Middlewares {
     public class ErrorHandlingMiddleware {
         private readonly RequestDelegate _next;
 

@@ -1,8 +1,8 @@
-﻿using TAN_10042024.Application.Abstractions;
-using TAN_10042024.Application.Abstractions.Queries;
-using TAN_10042024.Application.Abstractions.Repositories;
+﻿using Clean.Architecture.API.Application.Abstractions;
+using Clean.Architecture.API.Application.Abstractions.Queries;
+using Clean.Architecture.API.Application.Abstractions.Repositories;
 
-namespace TAN_10042024.Application.Services {
+namespace Clean.Architecture.API.Application.Services {
     public class PersonService : IPerson {
         private readonly ILogger<PersonService> _logger;
         private readonly IPersonRepository _personRepo;

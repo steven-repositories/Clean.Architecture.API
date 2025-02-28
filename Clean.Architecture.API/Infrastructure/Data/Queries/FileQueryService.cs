@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TAN_10042024.Application.Abstractions.Queries;
-using File = TAN_10042024.Domain.Entities.File;
+using Clean.Architecture.API.Application.Abstractions.Queries;
+using File = Clean.Architecture.API.Domain.Entities.File;
 
-namespace TAN_10042024.Infrastructure.Data.Queries {
+namespace Clean.Architecture.API.Infrastructure.Data.Queries {
     public class FileQueryService : IFileQueryService {
         private readonly ILogger<FileQueryService> _logger;
         private readonly AppDbContext _dbContext;

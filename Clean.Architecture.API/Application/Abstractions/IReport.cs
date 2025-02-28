@@ -1,6 +1,6 @@
-﻿using TAN_10042024.Application.Models;
+﻿using Clean.Architecture.API.Application.Models;
 
-namespace TAN_10042024.Application.Abstractions {
+namespace Clean.Architecture.API.Application.Abstractions {
     public interface IReport {
         Task<FileReportResponse> ReportFiles();
     }

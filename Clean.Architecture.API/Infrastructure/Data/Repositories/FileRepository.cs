@@ -1,9 +1,9 @@
-﻿using TAN_10042024.Application.Abstractions.Repositories;
-using TAN_10042024.Application.Utilities;
-using static TAN_10042024.Application.Utilities.Exceptions;
-using File = TAN_10042024.Domain.Entities.File;
+﻿using Clean.Architecture.API.Application.Abstractions.Repositories;
+using Clean.Architecture.API.Application.Utilities;
+using static Clean.Architecture.API.Application.Utilities.Exceptions;
+using File = Clean.Architecture.API.Domain.Entities.File;
 
-namespace TAN_10042024.Infrastructure.Data.Repositories {
+namespace Clean.Architecture.API.Infrastructure.Data.Repositories {
     public class FileRepository : IFileRepository {
         private readonly ILogger<FileRepository> _logger;
         private readonly AppDbContext _dbContext;

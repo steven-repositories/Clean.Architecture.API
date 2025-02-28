@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TAN_10042024.Domain.Abstractions {
+namespace Clean.Architecture.API.Domain.Abstractions {
     public abstract class Entity : IEntity {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -1,4 +1,4 @@
-﻿namespace TAN_10042024.Application.Abstractions {
+﻿namespace Clean.Architecture.API.Application.Abstractions {
     public interface IPerson {
         Task<int?> GetMaxScoreByTeam(string team);
         Task<int?> GetSecondToLeastScoreByTeam(string team);
