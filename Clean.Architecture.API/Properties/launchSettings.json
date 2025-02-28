@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "TAN_10042024-HTTP": {
+    "Clean.Architecture.API-HTTP": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -10,7 +10,7 @@
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5250"
     },
-    "TAN_10042024-HTTPS": {
+    "Clean.Architecture.API-HTTPS": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -20,7 +20,7 @@
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7267;http://localhost:5250"
     },
-    "TAN_10042024-DOCKER": {
+    "Clean.Architecture.API-DOCKER": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
