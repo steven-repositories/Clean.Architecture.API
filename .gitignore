@@ -1,5 +1,6 @@
 /.vs/
 /TAN_10042024/bin
 /TAN_10042024/obj
+/Clean.Architecture.API.Tests/*
 
 publish/
