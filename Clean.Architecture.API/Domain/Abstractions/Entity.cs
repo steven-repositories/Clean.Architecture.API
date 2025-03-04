@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clean.Architecture.API.Domain.Abstractions {
-    public abstract class Entity : IEntity {
+    public abstract class Entity {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; private set; }
