@@ -37,6 +37,9 @@ builder.Services.AddScoped<IPerson, PersonService>();
 
 // Domain Factories
 builder.Services.AddScoped<ApiSessionBuilderFactory>();
+builder.Services.AddScoped<AuthenticationSessionBuilderFactory>();
+builder.Services.AddScoped<FileBuilderFactory>();
+builder.Services.AddScoped<PersonBuilderFactory>();
 
 builder.Services.AddControllers();
 
