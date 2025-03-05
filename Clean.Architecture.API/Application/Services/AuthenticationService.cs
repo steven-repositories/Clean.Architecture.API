@@ -2,8 +2,8 @@
 using Clean.Architecture.API.Application.Abstractions.Queries;
 using Clean.Architecture.API.Application.Abstractions.Repositories;
 using Clean.Architecture.API.Application.Utilities;
-using Clean.Architecture.API.Domain.Builders;
 using Clean.Architecture.API.Domain.Entities;
+using Clean.Architecture.API.Domain.Factories;
 using static Clean.Architecture.API.Application.Utilities.Exceptions;
 
 namespace Clean.Architecture.API.Application.Services {
@@ -12,13 +12,15 @@ namespace Clean.Architecture.API.Application.Services {
         private readonly IAuthenticationSessionRepository _authSessionRepo;
         private readonly IAuthenticationSessionQueryService _authSessionQueryService;
         private readonly IClientQueryService _clientQueryService;
+        private readonly AuthenticationSessionBuilderFactory _authSessionBuilderFactory;
 
         public AuthenticationService(ILogger<AuthenticationService> logger, IAuthenticationSessionRepository authSessionRepo,
-            IAuthenticationSessionQueryService authSessionQueryService, IClientQueryService clientQueryService) {
+            IAuthenticationSessionQueryService authSessionQueryService, IClientQueryService clientQueryService, AuthenticationSessionBuilderFactory authSessionBuilderFactory) {
             _logger = logger;
             _authSessionRepo = authSessionRepo;
             _authSessionQueryService = authSessionQueryService;
             _clientQueryService = clientQueryService;
+            _authSessionBuilderFactory = authSessionBuilderFactory;
         }
 
         public async Task<Guid> GenerateKey(string clientName) {
@@ -49,8 +51,10 @@ namespace Clean.Architecture.API.Application.Services {
             _logger.LogInformation("New authentication key is generated: {0}"
                 .FormatWith(newKey.ToString()));
 
-            var newAuthSession = AuthenticationSessionBuilder
-                .Initialize()
+            var authSessionBuilder = _authSessionBuilderFactory
+                .CreateBuilder();
+
+            var newAuthSession = authSessionBuilder
                 .WithKey(newKey)
                 .WithClient(client)
                 .Build();

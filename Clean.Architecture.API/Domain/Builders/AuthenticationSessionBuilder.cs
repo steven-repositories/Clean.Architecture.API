@@ -3,9 +3,15 @@ using Clean.Architecture.API.Domain.Entities;
 using static Clean.Architecture.API.Application.Utilities.Exceptions;
 
 namespace Clean.Architecture.API.Domain.Builders {
-    public class AuthenticationSessionBuilder : Builder<AuthenticationSessionBuilder, AuthenticationSession> {
+    public class AuthenticationSessionBuilder : Builder<AuthenticationSession> {
+        private readonly ILogger<AuthenticationSessionBuilder> _logger;
+
         private Guid _key;
         private Client? _client;
+
+        public AuthenticationSessionBuilder(ILogger<AuthenticationSessionBuilder> logger) {
+            _logger = logger;
+        }
 
         public AuthenticationSessionBuilder WithKey(Guid key) {
             _key = key;
