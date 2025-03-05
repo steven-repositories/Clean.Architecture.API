@@ -11,8 +11,7 @@ namespace Clean.Architecture.API.Domain.Builders {
         private string? _team;
         private int? _score;
 
-        public PersonBuilder(ILogger<PersonBuilder> logger)
-        {
+        public PersonBuilder(ILogger<PersonBuilder> logger) {
             _logger = logger;
         }
 

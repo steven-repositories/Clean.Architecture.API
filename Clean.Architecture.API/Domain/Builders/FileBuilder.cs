@@ -10,8 +10,7 @@ namespace Clean.Architecture.API.Domain.Builders {
         private string? _name;
         private string? _content;
 
-        public FileBuilder(ILogger<FileBuilder> logger)
-        {
+        public FileBuilder(ILogger<FileBuilder> logger) {
             _logger = logger;
         }
 

@@ -9,8 +9,7 @@ namespace Clean.Architecture.API.Domain.Builders {
         private Guid _key;
         private Client? _client;
 
-        public AuthenticationSessionBuilder(ILogger<AuthenticationSessionBuilder> logger)
-        {
+        public AuthenticationSessionBuilder(ILogger<AuthenticationSessionBuilder> logger) {
             _logger = logger;
         }
 

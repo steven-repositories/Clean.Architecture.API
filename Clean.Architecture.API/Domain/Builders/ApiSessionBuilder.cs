@@ -10,8 +10,7 @@ namespace Clean.Architecture.API.Domain.Builders {
         private string? _method;
         private string? _url;
 
-        public ApiSessionBuilder(ILogger<ApiSessionBuilder> logger)
-        {
+        public ApiSessionBuilder(ILogger<ApiSessionBuilder> logger) {
             _logger = logger;
         }
 
