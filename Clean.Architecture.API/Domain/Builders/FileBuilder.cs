@@ -4,9 +4,16 @@ using static Clean.Architecture.API.Application.Utilities.Exceptions;
 using File = Clean.Architecture.API.Domain.Entities.File;
 
 namespace Clean.Architecture.API.Domain.Builders {
-    public class FileBuilder : Builder<FileBuilder, File> {
+    public class FileBuilder : Builder<File> {
+        private readonly ILogger<FileBuilder> _logger;
+
         private string? _name;
         private string? _content;
+
+        public FileBuilder(ILogger<FileBuilder> logger)
+        {
+            _logger = logger;
+        }
 
         public FileBuilder WithName(string name) {
             _name = name;
