@@ -8,6 +8,7 @@ using Clean.Architecture.API.Infrastructure.Data;
 using Clean.Architecture.API.Infrastructure.Data.Queries;
 using Clean.Architecture.API.Infrastructure.Data.Repositories;
 using Clean.Architecture.API.Infrastructure.Middlewares;
+using Clean.Architecture.API.Domain.Factories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,9 @@ builder.Services.AddScoped<IAuthentication, AuthenticationService>();
 builder.Services.AddScoped<IFileUpload, FileUploadService>();
 builder.Services.AddScoped<IReport, ReportService>();
 builder.Services.AddScoped<IPerson, PersonService>();
+
+// Domain Factories
+builder.Services.AddScoped<ApiSessionBuilderFactory>();
 
 builder.Services.AddControllers();
 

@@ -4,9 +4,16 @@ using Clean.Architecture.API.Domain.Entities;
 using static Clean.Architecture.API.Application.Utilities.Exceptions;
 
 namespace Clean.Architecture.API.Domain.Builders {
-    public class ApiSessionBuilder : Builder<ApiSessionBuilder, ApiSession> {
+    public class ApiSessionBuilder : Builder<ApiSession> {
+        private readonly ILogger<ApiSessionBuilder> _logger;
+
         private string? _method;
         private string? _url;
+
+        public ApiSessionBuilder(ILogger<ApiSessionBuilder> logger)
+        {
+            _logger = logger;
+        }
 
         public ApiSessionBuilder WithMethod(string method) {
             _method = method;
